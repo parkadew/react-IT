@@ -1,0 +1,198 @@
+
+todo - list 
+    (CRUD)
+    Create (생성)
+    Read   (조회)
+    Update (갱신)
+    Delete (삭제)
+
+ 1.todoList
+    css-in-js (js에서 css사용하기)(styled-components)
+    scss, tailwindcss, emotion, vanilaExtract, styleX
+    템플릿
+
+2. hookstodo
+    state, 관심사 분리
+
+3. contextTodo
+    global state management
+    reducer
+
+4. reduxTodo
+    flux pattern, middle ware, msw
+
+5. fetchTodo
+    data fetch, auth, react-hook-form(RHF)
+
+6. node-js(express)
+    dbms, express, orm, todo-list
+
+7. react - query, recoil todo
+   gcTime, staleTime
+
+8. suspense, error-boundary
+   error handling
+
+---------------react끝----------------
+
+npm uninstall -g 
+
+---
+
+리액트의 폴더구조
+
+1. Container/Presentational 폴더 구조
+   2019년(React16) 이전에 많이 사용했던 폴더 구조
+   함수형 컴포넌트가 나오기 이전에 사용했습니다.
+   지금은 창시자가 사용하지 말라고 언급한 폴더 구조
+
+   board
+      Container.js (logic) - 기능
+      Presenter.js (View) - 화면
+
+react 16이 발표되면서 hooks function 등장 이후 사용하지 않는 패턴
+특수한 경우에는 사용하면 좋은 패턴
+
+2. Hooks 폴더 구조
+
+최근에 가장 많이 사용하는 폴더구조
+
+components -> 모든 페이지에 공유 가능한 컴포넌트 (버튼)
+Hooks -> 상태 관련된 재사용되는 리액트 함수
+pages -> 웹 내 페이지
+
+    main
+        hooks -> 해당 페이지에서만 사용하는 리엑트 함수
+        components -> 해당 페이지에서만 사용되는 컴포넌트 재사용되지 않는
+        index.js(main.js) -> 컴포넌트들이 조립되는 공간
+
+     todo
+     board
+     my-page
+    utils -> 유틸함수 (helper)
+    libs -> 라이브러리 관련된 함수나 폴더가 구성
+    app.js -> 다른 라이브러리를 사용하는 설정이나, 루트 설정
+
+utils -> 유틸함수 (helper)
+libs 
+app.js "/" -> 다른 라이브러리를 사용하는 설정이나,루트 설정
+
+
+3. Atomic 폴더 구조
+
+    이론상으로는 가장 완벽한 패턴, 어떠한 컴포넌트든 재사용되는
+    atom(원자) 단위로 쪼개서 더이상 분리할 수 없게끔 컴포넌트를 분리
+
+    atoms -> 더 이상 쪼갤수 없는 컴포넌트
+    molecules -> 여러개의 ATOM이 모여 하나의 의미를 갖는 컴포넌트
+    organisms -> 여러개의 molecules이 모여서 하나의 기능을 갖는 컴포넌트
+    templates -> 여러개의 organisms가 모여서 하나의 프레임을 갖춘 컴포넌트
+    pages -> 완성본
+
+
+4. FSD( Feature, Sliced Design ) 폴더 구조  
+
+   신상,현재 프론트엔드 개발자들이 hooks 폴더구조를 대체할 
+   폴더구조로 유심히 보고 있는 구조 중 하나
+
+   프로젝트의 도메인 혹은 기능을 분배하여 폴더 구조를 작성
+   
+---
+
+
+todolist 폴더 구조(hooks) 저희는 hooks 폴더 구조를 따를것입니다
+
+1. 강의 o -> 한번에 이해...?(x)
+         -> 질문
+
+2. 사설강의 -> 강의는 한번만
+3. 보고만들고 -> 안보고만들고 -> 바꾸어만들고
+4. 리액트는 폴더단위를 파일 단위로 이동하기 떄문에 필기할때 순서
+
+src 
+    components
+        TDButton.js
+
+    layouts
+        TDFooter
+        TDHeader
+        TDLayouts
+
+    pages
+        main 
+            components
+                Form.js
+            main.js(index.js)
+        todo 
+          components
+              AddModal.js
+              OneTodo.js
+              TodoList.js --> 수업용
+          todo.js(index.js)
+
+    libs
+        routes
+            router.js --> URL과 PAGES 매칭      
+    
+    styles
+        디자인시스템(디자인 토큰)
+        공용스타일
+
+
+---
+
+   react-router-dom
+   
+   router : 네트워크에 데이터를 전송하는 매개체 (소포)
+   현재 웹사이트의 URL을 감지하여 어떠한 컴포넌트를 보여줄지 결정하는 도구
+
+   npm i react-router-dom
+
+-----
+
+   번들(bundle)
+      -> 너저분하게 분리된 리소스들을 특정기준으로 분리하여 
+         사용자에게 화면이 보여지는 시간을 감소하는 작업
+
+         트리쉐이킹 : 사용하지 않는 불필요한 코드는 제거하고 필요한 코드들만 사용   
+         => bundle.js => 번들링 된 결과물
+         
+---------------------------------------------------------------
+
+    react style sheet
+
+     1. css - in - js 
+         js파일에 css 문법 작성이 가능한 스타일링 방법
+            => styled - components, emotion, styleX
+
+            현재는 실무에서 가장 많이 사용되는 방법
+    
+     2. pure css / scss + (post css)
+         일반적인 css,class 구분이 어려웠음 하지만 post css를 사용하면 
+         app.module.css를 통해서 해당 컴포넌트에서만 사용할 수 있는 css를 import 
+
+     3. tailwindcss / panda-css
+        가장 최근 스택에서는 자주 사용되는 스타일 시트
+         <div class="w300 h200">...</div> 
+    
+--------------------------------------------------------------
+
+    styled-commponents
+
+        스타일된 컴포넌트를 생성해서 요소 생성 대신 생성된 컴포넌트를 활용하는 방법
+
+        const wrapper = styled.div`
+                css문법
+        `
+
+        <Wrapper>
+            <div>
+             ...
+        </Wrapper>
+
+        npm i styled-commponents
+
+---------------------------------------------------------------
+
+
+ style

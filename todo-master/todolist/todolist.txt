@@ -1,0 +1,47 @@
+
+ react-router-dom을 사용하여 주소를 감지하여 주소에 맞는 컴포넌트를 보여줬다
+
+ ex)
+ 옷쇼핑몰 웹사이트에 접속 -> 물품 상세보기를 클릭
+ (gwan.com) -> (gwan.com)
+
+ 메인 페이지 -> 상세 보기 페이지
+
+ - 백엔드에 이달의 인기 상품 목록 요청(메인페이지)
+ - 상품의 고유한 값을 전달하여 해당 상품의 상세한 정보 요청(상세페이지)  - 상품의 고유한 값??
+   URL
+   gwan.com/product?goods=23241223
+   
+  주소에 전달된 데이터를 가지고올 수 있는 방법 - url parameter(매개변수)
+  
+  1. useSearchParams (query-string)
+  gwan.com/product?goods=23123123
+
+  const[SearchParams, useSearchParams] = useSearchParams()
+  SearchParams.get("goods") // 23134
+ 
+  2. useParams (url-parameter)
+     gwan.com/product/123233
+    
+    useParams은 어떻게 쓰나 
+    router에 들어가보자
+  
+  path: /todo/:todoId
+  element: <TodoPage/>
+
+  todopage.js
+    >>> const { todo } = useParams() //  123233
+
+
+----->>
+
+1. 데이터를 주소를 통해 전달할 수 있다.
+2. react-router-dom은 단순하게 URL은 맵핑 해주는 역할만 하는것이 아닌 주소를 다루는 다양한 함수를 지원
+
+----------
+
+url-parameter 사용
+navigation
+styled-components
+
+----------
