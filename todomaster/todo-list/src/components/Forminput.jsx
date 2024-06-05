@@ -1,24 +1,14 @@
+
+import React from "react"
 import styled from "styled-components"
 
-
-
-const SignInForm = () => {
-    return <S.Form>
-        <S.InputBox>
-            <S.InputLabel>
-                이메일
-            </S.InputLabel>
-            <S.Input placeholder='email' />
-        </S.InputBox>
-        <S.InputBox>
-            <S.InputLabel>
-                비밀번호
-            </S.InputLabel>
-            <S.Input placeholder='password' />
-        </S.InputBox>
-    </S.Form>
+const FormInput = ({ label, size }) => {
+    return <S.Input>
+        <S.InputLabel>FormInput</S.InputLabel>
+        <S.Input />
+    </S.Input>
 }
-export default SignInForm
+export default FormInput
 
 const Form = styled.form`
 background-color: '#fff';
@@ -61,4 +51,6 @@ const S = {
     InputLabel,
     Input
 }
+
+
 

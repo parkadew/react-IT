@@ -70,10 +70,11 @@ const Tab = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    ${(props) => props.$isSelected && 'backgroundColor: #e0e0e0'}
     &:hover{
         background-color: #e3f0fa;
     }
+    ${(props) => props.$isSelected && 'backgroundColor: #e0e0e0'}
+    
 `
 
 const S = {
