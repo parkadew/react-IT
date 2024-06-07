@@ -2,8 +2,8 @@
 import React from "react"
 import styled, { css } from "styled-components"
 
-const FormInput = ({ label, size, ...props }) => {
-    return <S.InputBox>
+const FormInput = ({ label, size, containerStyle, ...props }) => {
+    return <S.InputBox >
         <S.InputLabel>{label}</S.InputLabel>
         <S.Input size={size} {...props} />
     </S.InputBox>
