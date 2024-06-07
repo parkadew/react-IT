@@ -1,21 +1,12 @@
 import styled from "styled-components"
-
-
+import FormInput from "../../../components/Forminput"
 
 const SignInForm = () => {
     return <S.Form>
-        <S.InputBox>
-            <S.InputLabel>
-                이메일
-            </S.InputLabel>
-            <S.Input placeholder='email' />
-        </S.InputBox>
-        <S.InputBox>
-            <S.InputLabel>
-                비밀번호
-            </S.InputLabel>
-            <S.Input placeholder='password' />
-        </S.InputBox>
+        <FormInput label={"이메일"} placeholder={"이메일을 입력하세요"} size={3} />
+        <FormInput label={"비밀번호"} placeholder={"비밀번호를 입력하세요"} size={3} />
+
+
     </S.Form>
 }
 export default SignInForm
@@ -28,37 +19,8 @@ justify-content: center;
 align-items: center;
 padding: 32px;
 `
-const InputBox = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-position: relative;
-margin-bottom: 16px;
-width: 100%;
-`
-const Input = styled.input`
-border: 1px solid #999;
-width: 100%;
-border-radius: 4px;
-padding-left: 16px;
-height: 48px;
-&::placeholder{
-    text-align: center;
-}
-`
-const InputLabel = styled.label`
-    position: absolute;
-    left: 16px;
-    top: -6px;
-    font-size: 12px;
-    background-color: aliceblue;
-    z-index: 100;
-    padding: 0 4px;
-`
+
 const S = {
     Form,
-    InputBox,
-    InputLabel,
-    Input
 }
 

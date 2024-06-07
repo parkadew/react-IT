@@ -1,23 +1,30 @@
 
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
-const FormInput = ({ label, size }) => {
-    return <S.Input>
-        <S.InputLabel>FormInput</S.InputLabel>
-        <S.Input />
-    </S.Input>
+const FormInput = ({ label, size, ...props }) => {
+    return <S.InputBox>
+        <S.InputLabel>{label}</S.InputLabel>
+        <S.Input size={size} {...props} />
+    </S.InputBox>
 }
 export default FormInput
 
-const Form = styled.form`
-background-color: '#fff';
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 32px;
-`
+const sizeCss = {
+    1: css`
+    width: 100px;
+    height: 30px;
+    `,
+    2: css`
+    width: 300px;
+    height: 48px;
+    `,
+    3: css`
+    width: 100%;
+    height: 48px;
+    `
+}
+
 const InputBox = styled.div`
 display: flex;
 justify-content: center;
@@ -28,10 +35,11 @@ width: 100%;
 `
 const Input = styled.input`
 border: 1px solid #999;
-width: 100%;
 border-radius: 4px;
 padding-left: 16px;
-height: 48px;
+
+${(props) => sizeCss[props.size]}
+
 &::placeholder{
     text-align: center;
 }
@@ -46,10 +54,10 @@ const InputLabel = styled.label`
     padding: 0 4px;
 `
 const S = {
-    Form,
     InputBox,
     InputLabel,
-    Input
+    Input,
+
 }
 
 
