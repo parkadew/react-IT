@@ -1,10 +1,12 @@
 
 import styled, { css } from "styled-components"
 
-const TDButton = ({ variant, size, shape }) => {
+const TDButton = ({ variant, size, shape, children, ...rest }) => {
     return (
-        <S.Button>
-            {...{ size, shape, variant }}
+        <S.Button {...{ size, shape, variant }}
+            {...rest}
+        >
+            {children}
         </S.Button>
     )
 }
@@ -12,12 +14,16 @@ export default TDButton
 
 const variantCSS = {
     primary: css`
-        background-color: green;
+        background-color: #0cc1ac;
         color:white;
+        outline: none;
+        border-radius: 3px;
+        border-color: #0cc1ac;
     `,
     secondary: css`
         background-color: #0091ff;
         color: white;
+        outline: none;
     `,
     "primary-text": css`
     color:green;
@@ -39,14 +45,13 @@ const sizeCSS = {
     `
 }
 
-
 // variant 에따라 css가 변경 -> variant
 // size에 따라 css가 변경 -> sizeCss
 // shape에 따라 css가 변경 -> shapeCSS
 
 const shapeCSS = {
     shape: css`
-        border-radius: 8px;
+       
     `,
     round: css`
         border-radius: 50%;

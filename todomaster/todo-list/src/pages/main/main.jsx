@@ -20,7 +20,6 @@ const Main = () => {
         formState = tabName
     }
 
-
     return <S.Wrapper>
         <S.Container>
             <S.Header>
@@ -40,24 +39,25 @@ const Main = () => {
 }
 export default Main
 
-
-
 const Wrapper = styled.div`
 height: calc(100vh - 140px);
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+
 `
 
 const Container = styled.div`
     width: 360px;
     border : 1px solid #999;
+    border-radius: 3px;
 `
 
 const Header = styled.header`
     background-color: #11dcc1;
     display: flex;
+    border-radius: 2px;
 `
 const Tab = styled.div`
     font-size: 32px;
@@ -72,6 +72,7 @@ const Tab = styled.div`
         background-color: #e3f0fa;
     }
     ${(props) => props.$isSelected && 'backgroundColor: #e0e0e0'}
+   
     
 `
 
