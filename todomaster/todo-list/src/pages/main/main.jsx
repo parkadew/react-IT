@@ -3,7 +3,7 @@ import SignInForm from "./_components/Signin-Form"
 import SignUpForm from "./_components/Signup-Form"
 
 const Main = () => {
-    let formState = "SIGN-IN"
+    let formState = "SIGN-UP"
 
     const TAB_ARRAY = [
         {
@@ -31,7 +31,7 @@ const Main = () => {
                 </S.Tab>)}
             </S.Header>
             {
-                formState === 'SIGN-IN' ? <SignInForm /> : <SignUpForm />
+                formState === 'SIGN-IN' ? <SignInForm /> : <SignUpForm formState={formState} />
             }
         </S.Container>
 
@@ -73,7 +73,6 @@ const Tab = styled.div`
     }
     ${(props) => props.$isSelected && 'backgroundColor: #e0e0e0'}
    
-    
 `
 
 const S = {
