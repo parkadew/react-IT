@@ -3,7 +3,7 @@ import SignInForm from "./_components/Signin-Form"
 import SignUpForm from "./_components/Signup-Form"
 
 const Main = () => {
-    let formState = "SIGN-UP"
+    let formState = "SIGN-IN"
 
     const TAB_ARRAY = [
         {

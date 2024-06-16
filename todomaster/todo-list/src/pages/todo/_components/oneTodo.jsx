@@ -1,28 +1,10 @@
 import styled from "styled-components";
-import React, { useRef, useState } from "react";
+import React from "react";
 import { flexAlignCenter } from "../../../libs/styles/common";
 
-const OneTodo = ({ todo, deleteTodo, updateTodo }) => {
 
-    const [isEditMode, setIsEditMode] = useState(false);
-    const contentRef = useRef();
 
-    const onpressDeletTodo = () => {
-        deleteTodo(todo.id);
-    }
-
-    const onPressChangeEditMode = () => {
-        setIsEditMode(true);
-    };
-
-    const onPressEdit = () => {
-        setIsEditMode(false);
-        updateTodo({
-            todoId: todo.id,
-            content: contentRef.current.value
-        });
-    };
-
+const OneTodo = ({ todo }) => {
     return (
         <S.Wrapper state={todo.state}>
             <S.Header>
@@ -31,14 +13,13 @@ const OneTodo = ({ todo, deleteTodo, updateTodo }) => {
                     {todo.title}
                 </div>
                 <div>
-                    <button onClick={isEditMode ? onPressEdit : onPressChangeEditMode}>
-                        {isEditMode ? "완료" : "수정"}</button>
-                    <button onClick={onpressDeletTodo}>삭제</button>
+                    <button>수정</button>
+                    <button>삭제</button>
                 </div>
             </S.Header>
-            {isEditMode ? <textarea ref={contentRef} defaultValue={todo.content}></textarea> : <S.Content state={todo.state}>{todo.content}</S.Content>}
-
-
+            <S.Content state={todo.state}>
+                {todo.content}
+            </S.Content>
         </S.Wrapper>
     )
 
