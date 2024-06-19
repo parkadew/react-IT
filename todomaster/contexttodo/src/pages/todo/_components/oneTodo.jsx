@@ -8,13 +8,9 @@ const OneTodo = ({ todo, }) => {
     const { todos, setTodos } = useTodo();
 
     const deleteTodo = (todoId) => {
-
     };
-
     const updateTodo = ({ todoId, content }) => {
-
     };
-
 
     const [isEditMode, setIsEditMode] = useState(false);
     const contentRef = useRef();

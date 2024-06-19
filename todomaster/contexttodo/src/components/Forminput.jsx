@@ -2,11 +2,20 @@
 import React from "react"
 import styled, { css } from "styled-components"
 
-const FormInput = ({ label, size, containerStyle, ...props }) => {
-    return <S.InputBox >
-        <S.InputLabel>{label}</S.InputLabel>
-        <S.Input size={size} {...props} />
-    </S.InputBox>
+const FormInput = ({ label, size, containerStyle, error, ...props }) => {
+    return <>
+        <S.InputBox >
+            <S.InputLabel>{label}</S.InputLabel>
+            <S.Input size={size} {...props} />
+
+        </S.InputBox>
+        <p style={{
+            visibility: error ? "visibility" : "hidden",
+            color: "red",
+            padding: 0,
+            fontsize: 10,
+        }}>{error}</p>
+    </>
 }
 export default FormInput
 
@@ -30,7 +39,6 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: relative;
-margin-bottom: 16px;
 width: 100%;
 `
 const Input = styled.input`
