@@ -24,7 +24,6 @@ const RootLayout = () => {
     const metadata = dynamicLayoutMetadata(location.pathname);
     console.log(metadata)
 
-
     //Outlet
     return <>
         {metadata.header && <header>header</header>}
