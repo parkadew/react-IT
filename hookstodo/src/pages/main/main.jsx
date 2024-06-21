@@ -2,6 +2,8 @@ import styled from "styled-components"
 import SignInForm from "./_components/Signin-Form"
 import SignUpForm from "./_components/Signup-Form"
 import { useState } from "react"
+import React from "react"
+
 
 const Main = () => {
     const [formState, setFormState] = useState("SIGN-IN")
@@ -19,7 +21,6 @@ const Main = () => {
 
     const handlePressSignTab = (tabName) => {
         setFormState(tabName);
-        console.log(formState)
     }
 
     return <S.Wrapper>

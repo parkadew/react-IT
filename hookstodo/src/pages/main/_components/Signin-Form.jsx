@@ -7,8 +7,6 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-
-
 const SignInForm = () => {
 
     const navigate = useNavigate()
@@ -17,7 +15,11 @@ const SignInForm = () => {
         event.preventDefault()
         const email = event.target.email.value
         const password = event.target.password.value
-        if (!email.trim() || !password.trim()) return;
+        if (!email.trim() || !password.trim()) return
+        //이거 왜필요한지 모르겠네
+        alert('아이디와 비밀번호에 내용이 들어가있는지 확인 좀 해보세요')
+            ;
+        // trim을 통해 공백을 없앴는데 둘중 하나라도 값이 없다면 반환?return 종료 시켜버려라
         if (email === "test" && password === "test") {
             return navigate("/todo/3")
         }
