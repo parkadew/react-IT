@@ -1,17 +1,16 @@
 import styled from "styled-components";
 import OneTodo from "./onTodoModal";
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, setTodos }) => {
 
     return (
         <S.Wrapper>
             {todos.map((todo) => (
-                <OneTodo key={todo.id}
-                    todo={todo}
-                />
+                <OneTodo key={todo.id} todo={todo} />
             ))}
         </S.Wrapper>
     )
+
 }
 export default TodoList
 

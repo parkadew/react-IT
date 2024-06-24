@@ -15,8 +15,6 @@ const TodoList = ({ todos, setTodos }) => {
             ...temp_todos[selectTodoIndex],
             content,
         };
-
-
         setTodos(temp_todos);
     };
 

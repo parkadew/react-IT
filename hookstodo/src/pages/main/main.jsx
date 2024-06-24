@@ -4,7 +4,6 @@ import SignUpForm from "./_components/Signup-Form"
 import { useState } from "react"
 import React from "react"
 
-
 const Main = () => {
     const [formState, setFormState] = useState("SIGN-IN")
 
@@ -38,7 +37,6 @@ const Main = () => {
                 />
             }
         </S.Container>
-
     </S.Wrapper >
 }
 export default Main

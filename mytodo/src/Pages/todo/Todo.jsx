@@ -2,31 +2,34 @@
 import styled from "styled-components"
 import TodoList from "./listcomponent/todolist"
 import MButton from "../../components/button"
-
+import { useState } from "react";
+import AddTodoModal from './listcomponent/addmodal'
 
 const Todo = () => {
+    const [OpenAddTodoModal, setOpenAddTodoModal] = useState(false);
 
-    const todos = [
+    const [todos, setTodos] = useState([
         {
             id: 1,
             title: "example-1",
             content: "example-1",
-            state: true
+
         },
         {
             id: 2,
-            title: "example-1",
-            content: "example-1",
-            state: true
+            title: "example-2",
+            content: "example-2",
+
         },
-    ]
+    ])
 
     return <>
+        {OpenAddTodoModal && <AddTodoModal setOpenAddTodoModal={setOpenAddTodoModal} todos={todos} setTodos={setTodos}></AddTodoModal>}
         <S.Wrapper>
             <S.Container>
                 <S.Title>TODOLIST</S.Title>
-                <TodoList todos={todos} />
-                <MButton  >
+                <TodoList todos={todos} setTodos={setTodos} />
+                <MButton onclick={() => setOpenAddTodoModal(true)}>
                     추가
                 </MButton>
             </S.Container>

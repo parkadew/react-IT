@@ -1,22 +1,24 @@
 import styled from "styled-components";
 
-const OneTodo = () => {
+const OneTodo = ({ todo, deleteTodo, updateTodo }) => {
 
-    return (
-        <S.Wrapper >
-            <S.Header>
-                <div>
-                </div>
-                <div>
-                    <button >
-                    </button>
-                    <button >삭제</button>
-                </div>
-            </S.Header>
-
-        </S.Wrapper>
-    )
-
+  return (
+    <S.Wrapper state={todo.state}>
+      <S.Header>
+        <div>
+          {todo.state ? "완료" : "미완료"}
+          {todo.title}
+        </div>
+        <div>
+          <button>수정</button>
+          <button>삭제</button>
+        </div>
+      </S.Header>
+      <S.Content state={todo.state}>
+        {todo.content}
+      </S.Content>
+    </S.Wrapper>
+  )
 }
 export default OneTodo
 
@@ -44,7 +46,7 @@ const Content = styled.div`
 `;
 
 const S = {
-    Wrapper,
-    Header,
-    Content,
+  Wrapper,
+  Header,
+  Content,
 };

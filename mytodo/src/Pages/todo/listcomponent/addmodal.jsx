@@ -1,27 +1,37 @@
 import styled from "styled-components";
 import MButton from "../../../components/button";
 
-const AddTodoModal = () => {
+const AddTodoModal = ({ setOpenAddTodoModal, todos, setTodos }) => {
+  const onPressAddTodo = (event) => {
+    event.prevenDefault();
+    const newTodo = {
+      id: Math.floor(Math.random() * 100000),
+      title: event.target.title.value,
+      content: event.target.content.value,
+      state: false,
+    }
+    setTodos([...todos, newTodo]);
+    setOpenAddTodoModal(false);
+  }
 
-    return (
-        <S.Modal>
-            <S.Form onSubmit={onPressAddTodo}>
-                <S.Title>
-                    <h1>ADD TODO LIST</h1>
-                    <button type='button' onClick={() => setisOpenAddTodoModal(false)}> x </button>
-                </S.Title>
-
-                <S.Content>
-                    <input name="title" placeholder="제목을 입력해주세요" />
-                    <textarea name="content" placeholder="할 일을 입력해주세요" />
-                </S.Content>
-                <MButton
-                >
-                    ADD
-                </MButton>
-            </S.Form>
-        </S.Modal>
-    )
+  return (
+    <S.Modal>
+      <S.Form onSubmit={onPressAddTodo}>
+        <S.Title>
+          <h1>ADD TODO LIST</h1>
+          <button type='button' onClick={() => setOpenAddTodoModal(false)} > x </button>
+        </S.Title>
+        <S.Content>
+          <input name="title" placeholder="제목을 입력해주세요" />
+          <textarea name="content" placeholder="할 일을 입력해주세요" />
+        </S.Content>
+        <MButton
+        >
+          ADD
+        </MButton>
+      </S.Form>
+    </S.Modal>
+  )
 }
 
 export default AddTodoModal
@@ -92,8 +102,8 @@ const Content = styled.div`
 `;
 
 const S = {
-    Modal,
-    Form,
-    Content,
-    Title,
+  Modal,
+  Form,
+  Content,
+  Title,
 };

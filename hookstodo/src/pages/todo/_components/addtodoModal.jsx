@@ -64,7 +64,6 @@ const Title = styled.div`
   font-size: 24px;
   ${flexAlignCenter};
   justify-content: space-between;
-
   & > button {
     border: none;
     cursor: pointer;
