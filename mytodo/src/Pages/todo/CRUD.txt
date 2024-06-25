@@ -1,0 +1,117 @@
+
+CRUD
+
+    생성 조회 삭제를 해볼것이다.
+    예시로는 
+
+
+    ----------
+    예시 state
+     ex)  const [todos, setTodos] = useState([   // 이것도 배열 안에 객체니까 가져오는법을 잘 확인해보자
+        {
+            id: 1,
+            title: "example-1",
+            content: "example-1",
+            s
+        },
+        {
+            id: 2,
+            title: "example-2",
+            content: "example-2",
+        },
+    ])
+
+
+    여기서 부터 시작해보자 
+    위에 예시 상태(state) 인 todos가 있다. 왜 todos는 상태여야할까?
+    >> todo가 추가되면(추가버튼이 눌려 list에 추가되면) one-todo가 사용자 화면에서 하나 증가한다.(레이아웃이 변경된다)
+    >> todo가 삭제되면 특정 one-todo가 사용자 화면에서 삭제 (레이아웃변경)
+    >> todo가 상태가 변경되어 완료로 변하면 사용자 화면에서 변경(레이아웃 변경)
+   
+    -----------------
+
+    Create(생성) 
+
+    생성은 사용자가 입력한 todo가 추가 되는형태이다 -> one-todo가 추가되는것. 
+    todo의 todolist에 
+    최종으로 구현해야하는코드는 뭘까?
+
+    setTodos(todos.push(newtodo))
+    이렇게 하면안될까? 하지만 상태는 push로 변경되지 않습니다.
+    push로는 상태가 변하지 않기 때문에 ...(전개연산자를 통한 오브젝트를 복사할것이다.)
+
+    전개연산자란 무엇일까? 
+    ex)
+    const object = [1,2,3]
+    const temp_object = object
+
+    이상태에서  temp_object 에 console.log를 찍어 확인해보면
+    object의 값과 같은[1,2,3]이 나오는것을 확인해 볼수있다.
+    console.log(object === temp_object) // true --> 복사된게 아니라 같은 배열의 주소를 바라보고있다는것을 알수있다
+    그래서 복사본을 통해 -> ?
+
+    const object = [1,2,3]
+    const temp_object = [] // 새로운 배열을 생성해준다 -> 새로운 주소를 할당해주는것
+                      = [...object] !== object
+    다시 해석해보자 temp_object에 빈배열을 선언한것을 확인할수있다.그리고 안에 내용물만 ...object로 채웠다..
+    그렇게 되면 안에 있는 내용물을 같겠지만 주소는 다르다고한다. 이유는 아예 새로운 배열로 선언했기 때문이다.
+
+    ----
+    
+    const temp_todos = [...todos] -> 일반 변수이기 떄문에 push를 해도 상관이없다// 
+    temp_todos.push(newTodo)
+    setTodos(temp_todos)
+
+    setTodos([...todos,newTodo])를 하면 완료된다. ---> 이게 전개연산자를 화용한후 마지막에 데이터를 붙이는 방법이다.
+
+    주목할점은 state의 불변성이다. 왜 복사본 배열이 필요한가
+      state의 불변성으로 인해 todos의 주소가 abcd라면 todos가 push되었다.
+
+    상태는 이전값이랑 똑같으면 setState를 해도 변하지 않는다.
+    todos.push(newTodo) // abcd
+    setTodos(todos) // 기존의 주소값 abcd --- 변경하려는 주소값 abcd
+    이렇게 주소가 같으면 리액트는 변화했다고 생각하지 않고 상태를 바꾸지 않는다. -> 주소 값의 변화를 주어야한다 -> 그래서 안에 값은 같더라도 주서가 다른 복사본 배열을 필요로 하는것이다.
+
+    최종적으로 구성해야하는 코드는
+    setTodo([...todos,newTodo])
+    // newTodo = {
+        id: shotId( <--- 랜덤 id 생성
+        title: 사용자의 입력값,
+        content: 사용자의 입력값 
+        
+        )
+    }
+    title이랑 content 의 값은 어떻게 가져올수있을까  -> event.target.title.value   //  event.target.content.value
+                                            
+    --------
+
+    Read (조회)
+
+    todos.map((todo) => <OneTodo todo ={todo})
+
+    -----------
+
+    Update(갱신)
+
+    id(백엔드에서 전달한 식별 값)랑 수정된 내용을 전달해주면 된다.
+    우리가 지금 할 방법은 백엔드가 없을때 하는방법으로 state를 주로 사용할것이다.
+
+    todos 배열을 내가 직접 바꿔야한다.
+    따라서, todos 배열에서 내가 갱신하고 싶은 todo를 찾아내야함
+    해당 todo의 속성 값을 바꾸면 된다.
+    (find, findIndex)
+
+    setTodos(temp_todos)
+    const temp_todos = [...todos]
+    const selectTodo = temp_todos.find((todo) => todo.id === todoId)
+    selectTodo = {
+        ...selectTodo, // title,content, state
+        title: 수정된 타이틀 --> 이렇게 수정된 title이 기존의 title을 덮어씌운다.
+    }
+    
+    setTodos(temp_todos)
+    input: todoId(고유 식별 값(고유 식별 조건)), 수정된 내용
+
+    --------
+
+    Delete(삭제)
