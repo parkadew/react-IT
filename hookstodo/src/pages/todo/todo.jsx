@@ -26,7 +26,6 @@ const Todo = function () {
         }
     ]);
 
-
     return <>
         {isOpenAddTodoModal && <AddTodoModal setisOpenAddTodoModal={setisOpenAddTodoModal} todos={todos} setTodos={setTodos} />}
         <S.Wrapper>

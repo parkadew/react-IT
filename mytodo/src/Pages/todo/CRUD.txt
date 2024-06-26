@@ -108,10 +108,18 @@ CRUD
         ...selectTodo, // title,content, state
         title: 수정된 타이틀 --> 이렇게 수정된 title이 기존의 title을 덮어씌운다.
     }
-    
+
     setTodos(temp_todos)
     input: todoId(고유 식별 값(고유 식별 조건)), 수정된 내용
 
     --------
 
     Delete(삭제)
+
+    특정 요소 혹은 특정 조건을 만족하는 요소들을 제외한 새로운 배열을 생성하여 상태를 변경한다.
+    filter -> 특정 조건, 새로운 배열이 생성
+
+    const deleteTodos = todos.filter((todo) => todo.id !== todoId) // todoId인것이 제외
+
+
+    

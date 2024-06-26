@@ -3,10 +3,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import StatesPage from "./pages/State";
 import DetailPage from "./pages/Detail";
 
-
-
-
-
 function App() {
 
   const router = createBrowserRouter([

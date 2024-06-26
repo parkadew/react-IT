@@ -2,17 +2,24 @@ import styled from "styled-components";
 import MButton from "../../../components/button";
 import React from "react";
 
-const AddTodoModal = ({ setOpenAddTodoModal, todos, setTodos }) => {
+
+const AddTodoModal = ({ setisOpenAddTodoModal, todos, setTodos }) => {
+  //너가 생각해봐 state를 true로 하니까 modal창이 나왔어 그럼?false로 하면 닫히겠지
   const onPressAddTodo = (event) => {
-    event.prevenDefault();
+    event.preventDefault();
+    /*
+    setTodos([...todos,newTodo]) 가 필요한데 왜필요할까
+    배열안에 전개연산자..
+    아 처음에 말했지 setTodos 상태에 ...todos전에 있던 데이터에 새로 생성한 데이터newTodo를 넣어 덮어씌우는것이라고
+    */
     const newTodo = {
-      id: Math.floor(Math.random() * 100000),
+      id: Math.floor(Math.random() * 10000000),
       title: event.target.title.value,
       content: event.target.content.value,
       state: false,
     }
-    setTodos([...todos, newTodo]);
-    setOpenAddTodoModal(false);
+    setTodos([...todos, newTodo])
+    setisOpenAddTodoModal(false);
   }
 
   return (
@@ -20,7 +27,7 @@ const AddTodoModal = ({ setOpenAddTodoModal, todos, setTodos }) => {
       <S.Form onSubmit={onPressAddTodo}>
         <S.Title>
           <h1>ADD TODO LIST</h1>
-          <button type='button' onClick={() => setOpenAddTodoModal(false)} > x </button>
+          <button type='button' onClick={() => setisOpenAddTodoModal(false)}> x </button>
         </S.Title>
         <S.Content>
           <input name="title" placeholder="제목을 입력해주세요" />
@@ -34,7 +41,6 @@ const AddTodoModal = ({ setOpenAddTodoModal, todos, setTodos }) => {
     </S.Modal>
   )
 }
-
 export default AddTodoModal
 
 const Modal = styled.div`
