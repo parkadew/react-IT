@@ -8,19 +8,18 @@ import AddTodoModal from './listcomponent/addmodal'
 const Todo = function () {
 
     const [isOpenAddTodoModal, setisOpenAddTodoModal] = useState(false);
-
     const [todos, setTodos] = useState([
         {
             id: 1,
             title: "example-1",
             content: "example-1",
-            state: "true"
+            state: true,
         },
         {
             id: 2,
             title: "example-2",
             content: "example-2",
-            state: "true"
+            state: false
 
         }
     ]);

@@ -33,8 +33,7 @@ const AddTodoModal = ({ setisOpenAddTodoModal, todos, setTodos }) => {
           <input name="title" placeholder="제목을 입력해주세요" />
           <textarea name="content" placeholder="할 일을 입력해주세요" />
         </S.Content>
-        <MButton
-        >
+        <MButton>
           ADD
         </MButton>
       </S.Form>

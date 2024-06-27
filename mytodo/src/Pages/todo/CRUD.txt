@@ -120,6 +120,8 @@ CRUD
     filter -> 특정 조건, 새로운 배열이 생성
 
     const deleteTodos = todos.filter((todo) => todo.id !== todoId) // todoId인것이 제외
-
+    
+    삭제 어떻게 구현할것이냐
+    
 
     

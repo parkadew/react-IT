@@ -3,14 +3,24 @@ import OneTodo from "./onTodoModal";
 
 const TodoList = ({ todos, setTodos }) => {
 
+    const updateTodo = ({ todoId, content }) => {
+        const temp_todos = [...todos];
+        const selectTodoIndex = temp_todos.findIndex((todo) => todo.id === todoId);
+        // selectTodo.content = content;
+        temp_todos[selectTodoIndex] = {
+            ...temp_todos[selectTodoIndex],
+            content,
+        };
+        setTodos(temp_todos);
+    };
+
     return (
         <S.Wrapper>
             {todos.map((todo) => (
-                <OneTodo key={todo.id} todo={todo} />
+                <OneTodo key={todo.id} todo={todo} todos={todos} setTodos={setTodos} updateTodo={updateTodo} />
             ))}
         </S.Wrapper>
     )
-
 }
 export default TodoList
 

@@ -9,6 +9,7 @@ function State1({ addPlayList, setaddPlaylist }) {
   const onPressAddList = () => {
     const newPlaylist = [...addPlayList];
 
+
     const newSong = {
       id: Math.floor(Math.random() * 100000),
       title: newTitle,
