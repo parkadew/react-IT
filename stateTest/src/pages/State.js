@@ -5,17 +5,16 @@ import PlayListMock from "../__mock__/playList.json";
 import { useState } from "react";
 
 
-const PlaylistMockData = PlayListMock.playlist.map((l) => ({
-  ...l, id: Math.floor(Math.random() * 100000)
-}))
+// const PlaylistMockData = PlayListMock.playlist.map((l) => ({
+//   ...l, id: Math.floor(Math.random() * 100000)
+// }))
 
 function StatesPage() {
-  const [addPlayList, setaddPlaylist] = useState(PlaylistMockData)
-
+  // const [addPlayList, setaddPlaylist] = useState(PlaylistMockData)
 
   return (
     <div>
-      <State1 addPlayList={addPlayList} setaddPlaylist={setaddPlaylist} />
+      <State1 />
       <hr />
       <State2 />
       <hr />

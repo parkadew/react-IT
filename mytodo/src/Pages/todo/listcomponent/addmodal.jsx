@@ -50,7 +50,6 @@ const Modal = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 `;
-
 const Form = styled.form`
   width: 480px;
   position: absolute;
@@ -62,7 +61,6 @@ const Form = styled.form`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   padding: 32px;
 `;
-
 const Title = styled.div`
   font-size: 24px;
   display: flex;

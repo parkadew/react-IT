@@ -3,10 +3,8 @@ import styled from "styled-components";
 import Comment from "./components/comment";
 
 function State2() {
-
   /*  
     문제 2.
-
     Q1. 아래 작성된 state의 mock data를 활용하여
         댓글 목록을 화면에 랜더링 해보세요 :)
         Components는 src/components/state/comment.js를 활용하세요
@@ -16,12 +14,8 @@ function State2() {
             2. 댓글 수정 기능
             3. 댓글 삭제 기능 ( 본인이 작성한 댓글만 삭제할 수 있습니다, myComment 활용 )
     */
-
-
-
-
-
   const [post, setPost] = useState({
+
     title: "안녕하세요 여러분 김성용 강사입니다 :)",
     content: "오늘도 모두 화이팅입니다!",
     User: {
@@ -29,7 +23,6 @@ function State2() {
       age: 20,
       height: 190,
     },
-
     Comments: [
       {
         id: 1,

@@ -20,10 +20,8 @@ const Todo = function () {
             title: "example-2",
             content: "example-2",
             state: false
-
         }
     ]);
-
     return <>
         <S.Wrapper>
             {isOpenAddTodoModal && <AddTodoModal todos={todos} setTodos={setTodos} setisOpenAddTodoModal={setisOpenAddTodoModal} />}
