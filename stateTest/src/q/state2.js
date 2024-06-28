@@ -153,7 +153,6 @@ const PostTitle = styled.p`
 const PostContent = styled.p`
   color: #fff;
 `;
-
 const PostInfo = styled.div`
   width: 360px;
   border: 3px solid #f00;
