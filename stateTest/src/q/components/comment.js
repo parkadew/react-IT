@@ -10,7 +10,6 @@ function Comment({ post, setPost }) {
   console.log(IdPost)
 
 
-
   // Idpost를 사용할때 IdPost[0]를 사용하지 않으면 그 배열로 들어가지 못한다 
   // 헌데 왜 밑에서 map을 돌린 IdPost.map은 매개변수로 받은 co를 바로 복사본으로 받아볼수있는것일까??
   // map이 복사본 배열을 반환한다...
@@ -25,6 +24,9 @@ function Comment({ post, setPost }) {
   // 그그 {} 안에 들어가있잖아
   // 
   //그래 내가 복사본을 생성해서 
+  // 지금까지 내가 한것은 화면에 데이터들이 렌덩링 될수있도록 만들었다.
+  // 그럼 이제 추가하는 로직을 만들어보자
+  // 추가 버튼은 state2파일에 있기때문에 거기서 만드는게 좋을것같다
 
   return (
     <S.CommentItem>

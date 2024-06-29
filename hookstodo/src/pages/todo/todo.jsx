@@ -6,7 +6,6 @@ import TDButton from "../../components/Button";
 import AddTodoModal from "./_components/addtodoModal";
 import TodoList from "./_components/todoList";
 
-
 const Todo = function () {
 
     const [isOpenAddTodoModal, setisOpenAddTodoModal] = useState(false);

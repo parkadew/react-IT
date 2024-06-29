@@ -22,20 +22,15 @@ function State1() {
       signer: newSinger,
     }
     setList([...List, NewList])
-
   }
   // const deleteList = (id) => {
   //   //     const dlbt = addPlayList.filter(a => a.id !== id);
   //   //     setaddPlaylist(dlbt)
   //   //   }
-
   const deleteList = (song) => {
     const filterList = List.filter((li) => li.id !== song)
     setList(filterList)
   }
-
-
-
 
   /* 
     문제 1.
@@ -87,7 +82,6 @@ function State1() {
 
          삭제기능을 만들어보자
          먼저 삭제를 하려면 -> 
-
 
   */
 
