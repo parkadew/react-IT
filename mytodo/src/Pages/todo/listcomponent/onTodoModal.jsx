@@ -9,13 +9,16 @@ const OneTodo = ({ todo, todos, setTodos, updateTodo }) => {
       // deleteTodo 에 매개변수로 todoId를 받았넹? 어디에쓰려고 -> 이거는 위에
       // onPressDeleteTodo 함수 즉 밑에 버튼에 onClick 이벤트를 부여해서 클릭하면 onPressDeleteTodo에 값이 전달되는거야
       // 그렇게 클릭된 데이터 todos데이터 배열이 전달되었지 내가 임의로 적은 todoId에 그렇게 전달 받은 todoId를
+      //(filter로 todo.id를 통해 id를 찾아내는거구나)
       // 일단 filterTodo를 선언해준 후 todos를 고차함수 filter를 사용해서 임의의 매개변수 todo => 임의의 todos에 요소값이 들어오는거다
       // 그 요소값이랑 이제 비교를 하는거야 요소 id랑 내가 클릭해서 받아온 todoId의 값을 
       // 나는 100000로 random을 돌렸기때문에 당연히 겹칠일이없을테고 
       // ture면 반환해주는데 그럼 잠깐 random을 10으로 해봐야지 오오오삭제만 안되고 true가된다고 해서 뭐 잗공하는건없네
       // false면 왜 지우져버리지..? 와 미친 true면 생성이 되어버리네 생각이 맞았다 --> true면 반환하니까 생성되는것같다
+      //
       const filterTodo = todos.filter((todo) => todo.id !== todoId)
-      setTodos(filterTodo); //-> 이건 뭐야
+      setTodos(filterTodo); //-> 이건 뭐야 이건 state의 상태를 관리하느 함수에 상태를 관리해주는거야 만약 여기에다가 timer라고 치고 +1을 하게되면
+      // 상태에 따라 화면에 랜더링되면 +1을 하게 해줄거야 너는 filtertodo를 넣어줬으니까 filtertodo가 작동하겠지 언제? 너가 onPressDeleteTodo를 눌렀을때
       console.log(filterTodo)
     }
     deleteTodo(todo.id); //클릭한 oneTodo에 대한 id값? 맞네!

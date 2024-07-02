@@ -4,6 +4,8 @@ import OneTodo from "./onTodoModal";
 const TodoList = ({ todos, setTodos }) => {
 
     const updateTodo = ({ todoId, content }) => {
+        //TodoListdp todos, setTodos를 props로 매개변수로 전달받은건알겠어
+        // 그런데 updateTodo는 todoId, content를 어떻게 왜 매개변수로 넣어놨을까?
         const temp_todos = [...todos];
         const selectTodoIndex = temp_todos.findIndex((todo) => todo.id === todoId);
         // selectTodo.content = content;

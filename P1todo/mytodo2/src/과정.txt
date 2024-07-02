@@ -1,0 +1,90 @@
+선생님 풀이
+
+나는 페이지가 두개 필요해
+
+1. 나는 페이지가 2개 필요해  -> router
+// npm i react-router-dom
+
+위에가 필요한것을 알았으니 react-router-dom 공식문서로 들어가 -> getting start
+
+
+
+
+todolist를 처음부터 다시 만들거야
+다시만들고 또 다시 만들고 너가 외워질때까지 다시 만들테야
+
+내가 생각한 과정중 먼저 해야할일은 ->
+주소까지 활용할수있게 만드는것이야
+그러면 router가 필요해
+router를 통해 main 페이지와 todopage를 이동할것이고 main에는 로그인과 회원가입 창을 
+그리고 todo페이지 에는 todo리스트를 만들고 CRUD 추가 조회 수정 삭제 기능을 만들어줄거야
+그 모든 과정을 세세히 작성해보자
+
+시작하기 전에 필요한 리액트 아리브러래를 설치받아올것이다.
+npx create-react-app mytodo2
+로 리액트 라이브러리를 설치해주었다
+그리고 스타일 컴포넌트도 사용할것이기에 
+cd 로 mytodo로 이동해준 후
+npm i styled-components 명령어를 통해 설치해주자
+
+그리고 화면을 이동시켜줄 router를 사용할것이다
+
+!(전에 파일 참고)
+-----
+libs   
+        routes
+            router.js --> URL과 PAGES를 매칭 해주는 곳
+
+react router dom은 
+현재 url을 감지하여 어떤 컴포넌트를 보여줄지 결정하는 도구이다.
+공식 문서를 통해 사용법을 확인하자
+내가 router를 사용할곳은 P1todo의 mytodo2로 경로를 잘 맞추어 사용해주자
+현재 사용법은 mpn i react-router-dom이다.
+설치가 완료되었다면 리액트라이브러리의 package.json으로 돌아가 확인해보자
+"react-router-dom": "^6.24.0", 이게 보이면 설치가 완료된것이다.
+
+react-router-dom을 사용하기 위해서는 먼저 
+      import {
+        createBrowserRouter,
+        RouterProvider,
+        } from "react-router-dom";
+import를 통해 react router dod을 불러와줘야한다.
+그리곤 
+  const router = createBrowserRouter([  {
+        path: "/",
+        element: <div>메인페이지입니다.</div>
+    },
+    {
+        path: "/todo",
+        element: <div>투두페이지입니다.</div>
+    },])
+    주소를 설정해 어떤 주소에 어떤 컴포넌트를 주여줄지 정해줘야한다
+     const router 를 했으면 export도 해줘야한다. 실제 렌더링 되는 최상위컴포넌트를 app.js이기 떄문에
+     app.js에 router를 사용해줄것이다.
+
+     그러나 나는 컴포넌트형태로 app.js에서 router를 컴포넌트 형태로 바로 사용할수있을줄 알았으나
+     routerProvider를 통해 router에 props로 router를 전달해주어야한다.
+     그럼 이제 화면에 main고 todo를 보여줄수있게 된다.
+
+
+
+
+
+
+
+
+
+
+
+
+먼저 파일 구조를 짜볼거야
+먼저 생각나는게 main과 todo를 만들어줘야할것같아
+그리고 main안에 보여줄 페이지들은..로그인과 회원가입 
+AccountForm과 SigininForm을 만들어주었어
+답을 알고 움직이자 내가 어떻게 만들지 먼저 전체적으로 구상하고 만들어주자
+
+
+
+
+
+먼저 todo와 main이 보일 컴포넌트를 생성해준후 router를 통해 이동경로..? todo와 main을 왓다갓다할수있게 만들어주잦
