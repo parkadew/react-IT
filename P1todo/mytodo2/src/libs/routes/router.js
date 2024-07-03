@@ -1,12 +1,14 @@
-import { createBrowserRouter, RouterProvider, } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import Main from "../../pages/main/main";
+import Todo from "../../pages/todo/todo";
 
 const router = createBrowserRouter([{
     path: "/",
-    element: <div>메인페이지입니다.</div>
+    element: <Main></Main>
 },
 {
     path: "/todo",
-    element: <div>투두페이지입니다.</div>
+    element: <Todo></Todo>
 },])
 export default router
 

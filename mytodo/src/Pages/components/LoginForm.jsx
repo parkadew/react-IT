@@ -20,11 +20,12 @@ const LoginForm = () => {
     return <S.Form onSubmit={handlePressLogin}>
         <FormInput placeholder={"Nick_name"} name="email" />
         <FormInput placeholder={"Pass_word"} name="password" />
-        <MButton>Log_In</MButton>
+        <MButton >Log_In</MButton>
     </S.Form>
 }
 
 export default LoginForm
+
 const Form = styled.form`
 background-color: '#fff';
 display: flex;

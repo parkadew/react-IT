@@ -1,11 +1,272 @@
 선생님 풀이
 
+
+내가 만들려는 페이지의 설계를 모두 마친 후에 코드를 작성하는것이 좋다
+-
+main -
+나는 main페이지에서 회원가입과 로그인 폼을 보여줄것이며
+회원가입에는 아이디입력/패스워드 입력/ 패스워드 확인 input박스 3개
+로그인 폼에는 아이디/패스워드/ input박스 2개를 작성하고 
+test/test를 입력하면 -> todo페이지로 넘어갈수있게끔 만들어줄거야 
+
+todo
+todo페이지 에서는 먼저 todo페이지 안에 todo리스트가 들어올수있게끔 만들어줄것이며
+todolist컴포넌트에 추가 버튼을 누르면 addtodomodal 이라는 팝업창이 보여지며 내용물을 입력하고 추가 버튼을
+누르면 Onetodo가 todolist에 추가 되어 보여질수있도록 만들어줄거야
+그리고 추가된 onetodo에 수정기능과 삭제 기능을 만들어줄것이다.
+
+전에 router를 왜 분리했을까 
+왜냐하면 app.js는 최상위 컴포넌트이기때문에 역할을 분리해서 사용해준것이다.
+여기 복습에서 얻은것은 
+roterProvider에 createBrowserRouter로 router를 props전달시켜준것이다.
+나는 뺴서 사용할것이다. 주서설정 완료
+
+이제 createBrowserRouter의 element에 단순 div가 아닌 화면을 구성해주는 컴포넌트들을 넣어줄것이다.
+그러면 컴포넌트를 만들어서 전달해줄것인데
+어디에 만들어줄것인가아 pages에 main과 todo를 분리시켜 만들어보자.
+pages폴더 안에 main.jsx와 todo.jsx를 만들것이다.
+
+Main.jsx에 Main컴포넌트를 만들어주었다.
+
+const Main = () => {
+    return <div>메인페이지입니다</div>
+}
+export default Main
+
+이제 이것을 내가 화면에 보여줄곳 즉 router와 연결시켜줄것이다 그리고 또 router는 routerProvide애서 props전달을 통해
+app.js에서 랜더링 되며 화면에 보여질깃이다.
+
+todo도 마찬가지로 보여줄수있다
+export된 todo와 main을 router의 엘리멘트에 컴포넌트로 넣어주자
+
+이제 Main을 갈것인데
+Main에 뭐가 필요한지 다시 생각해내보자
+일단 나는 로그인 창과 회원 가입 창을 구분할것이며 한 form창에 두개가 존재하고 클릭하면
+로그인 창을 클릭하면 로그인창 회원가입을 클릭하면 회원가입창이 나올수있도록 만들어줄거야.
+그러려면 내가 이구조를 생각해내야해 여기는 css이긴한데 그래도 생각해내 그 구조자체를
+<S.Wrapper>
+        <S.Container>
+            <S.Header>
+                {TAB_ARRAY.map((tab, index) => <S.Tab
+                    key={index}
+                    onClick={() => handlePressTab(tab.name)} >
+                    {tab.name}
+                </S.Tab>)}
+            </S.Header >
+            <Line></Line>
+            {
+                formState === 'LOG_IN' ? <LoginForm /> : <SignUpform />
+            }
+        </S.Container>
+    </S.Wrapper >
+Wrapper로 전체를 감싸줄거이며 Wrapper안에 내가 보이는 화면 container가 있을것이다.
+container header안에 로그인과 회원가입버튼이 있을것이며 각자 클릭시 보여지는 모습이 다를것이다.
+
+어떻게 구상할지 생각해내보자
+왜 컴포넌트 형식으로 css를 만드냐하면 스타일컴포넌트를 사용할것이기떄문이다.
+
+스타일은 완성되었다고 치자
+내가 할일을 먼저 생각해 나는 먼저 로그인 혹은 회원가입을 클릭했을떄 그에 맞는 폼이 화면에 랜더링 되는것이 목표야 
+어떻게 만들어낼수있을까
+
+
+먼저 내가 볼 화면 sigin 과 SignUp
+이걸 클릭했을떄 화면이 바뀌어 보이게 만들것이다.
+                <S.Tab >
+                    {"LOGIN"}
+                </S.Tab>
+                <S.Tab >
+                    {"Account"}
+                </S.Tab>
+두개의 탭중 하나를 클릭하면 화면이 바뀌게 만들어줄것이다.
+
+어떻게 만들어낼수있을까
+ {
+                formState === 'LOG_IN' ? <LoginForm /> : <SignUpform />
+     }
+    먼저 formState상태가 login true면 컴포전트 화시켰던 <LoginForm /> 이 false라면<SignUpform />이 보이게 만들어줄것이다
+    이벤트를 전달하여 검사를 해줄것이다.
+    먼저 전재사항이 tab을 클릭하면 이다.
+    tab이 클릭 되면 난 그것의 이름을 불러와 SIgnin인지 SignUP 인지 분별하여 상태에 전달해줄것이다.
+    나는 먼저 기능에 집중했으며 map을 돌리고 간략화 시키는 것은 따로 연습해보자
+
+    ----
+
+    이제 검사를 통해 아이디 test
+                 비밀번호 test를 작성하게 되면 todo페이지로 이동하는것을 만들것이다.
+    
+    이것은 SIgnIN이니 여기서 작성을 하고 연습으로 Account폼에서 LOGIN으로 가는것도 연습해보자
+
+    이제 내가해야할것은 무엇인가 설계하고 들어가자 생각
+    나는 아이디 패스워드에 test / test가 들어오면 todopage로 넘어갈거야
+    그렇다면 먼저 input에 입력된 값을 알고 그게 맞는지 검사를해야하 
+    input에 들어온값을 검겨받으려면 어떻게 해야할까
+
+    꼭알고넘어갈것 onclick고 onsubmit의 차이
+    일단 문제점 발생 onclick으로 함수를 실행시키면 -> input의 값 즉 value를 전달받지 못한다
+    하지만 onsubmit 이벤트로 함수를 실행시키먄 그 값이 그대로 전달되어 작동된다.
+
+    이것은 forminput의 값을 전달해주는것이 form을 통해 value를 전달하는 방식에 onsubmitㅇ리 적합하며
+    만약 onchange를 사용하게되면 각 FormInput에 onchange이벤트를 넣어줘야하고 분류가 어려워진다.
+    
+    그렇다면 form에 onsubmit은 어떻게 event.target.value를 가져오는지 알게되었다
+    onchange는 어떻게?? 
+
+    onCHange의 활용을 확인하기위해
+
+        const [formState, setFormState] = useState("LOGIN")
+
+    const change = (e) => {
+        setFormState(e.target.value)
+    }
+
+    return <S.Wrapper>
+        <S.Container>
+            <S.Header>
+                <input onChange={change}>
+                </input>
+
+    원래 탭을 클릭을 하게되면 setFormState의 값을 바꾸어주는것을 위 처럼 tab자체를 input을 바꾸고 입력한 값에 따라 화면이 바뀌게 만들어주었다
+
+     <S.Tab onClick={() => setFormState("funck")}>
+                    {"Account"}
+    onChange를 하게되면 바로 변화를 인식하고 그에 맞는 값이 왔을떄 바로 화면이 변하게된다.신기하군
+    onsubmit은 버튼을 눌렀어야했던가?
+
+이제 확실히 넘어가서 내가 할일은 LOGIONFORM에 test/test를 입력하면 todo로 넘어가는것
+지금 당장 해보자
+ 먼저 입력한값을 전달 받아 그값이 맞는지 확인해야하기 때문에 input의 입력값을 전달받아야하는것이 맞다
+ 전달받은후 그값의 true/false에 따라 반환값 즉 페이지를 이동하는 함수를 실행시킬것이다.
+ 전에 페이지를 이동해봤는데 그건 어떻게 했지 그건 router를 통해 실제 url주소를 감지한 후
+ 주소의 값에 맞추어 화면을 보여주는 것이였다.
+ 지금은 내가 router에 설정한 주소로 움직이는것이다
+ 반환될떄 NAVIGATE함수를 사용해 이동해볼것이다 사용법 숙지 쉽다
+
+ 먼저 값을 가져오는것
+ 무작정 form에 onsubmit을 입력하였다
+ 그럼 onsubmit을 통해 어떤함수를 작성할지 설계해보자
+
+    // onsubmit해서 그 함수에 event를 전달하는것이 목적이니 event를 받아야지
+    // 어떤 event가 올까 예상해보면 X 내가 어떤걸 보내야할지 정해야지
+    // email과 password에 오는 값을 판별하기 위해 event로 받은 value의 값을 변수에 저자해줄것이다
+    // 그리곤 그변수를 if문 비교를 통해 구별해주는것이다.
+    //const email = e.target.value;
+    //const password = e.target.value;
+    //그러나 위처럼 무작정 event를 받으면 받아야하는 이벤트가 하나이기떄문에 구분이 가지 않을것이다 
+    // 그러므로 name 키값을 더해줌으로써 구별햐주자
+    // const email = e.target.email.value; 이런식으로
+    // 그리곤 간단하다 useNavigate()함수를 변수에 담아 위 if (email === "test" && password === "test")
+    // 이게 두개다 true라서 반환될떄 navigate("/todo") 함수를 실행시킨다! 안에 주솔르 받아서
+    // 그것과 함께 onsubmit이벤트를 실행시키긴 위해서 button이 꼭 필요하다
+    // 여기서 버튼 타입을 버튼으로 바꾸면 안된다 -> 버튼의 원래 타입인 submit으로 놔둬야한다
+    // 그리고 form의 인풋태그는 엔터만 쳐도 submit된다
+    // 버튼도 된다
+    // form 태그 내에 타입 명시 없는 버튼은 submit으로 동작하므로 클릭 시 새로고침된다.
+    // 그래서 항상 이렇게 사용할시에   event.preventDefault(); 를 해줘야한다.
+
+이제 todo로 넘어가지니 todopage를 봐보자 
+
+이제 todolist를 만들어줄것이다.
+
+이제 추가 버튼을 누르면 추가 addtodomodal이 뜬후 그 안에 내용물을 입력하고 추가를 누르면 
+추가 되는 로직을 만들어줄것이다.
+ 
+먼저 추가버튼을 누르면 진짜추가버튼이 있는 addtodomodal이 화면 앞에 보일수있도록 만들어보자
+
+//일단 todo에서 임의의 mockdata를 형성해볼까?
+//usestate에 배열로 값을 적어서 todolist에 전달해줄것야 왜 전달해줄까 
+// todolist의 onetodo로 전달해주기 위해서지
+// 배열안에 객체로 생성해주었다
+// 이걸 보이게 해주고 싶어 그게 onetodo의 역할이야 onetodo에 값이 전달되도록 props로 전달해보자
+// 보내줬으면 todolist로가서 받아줘야지
+// 그리고 받은 데이터로 onetodo를 생성해줄거야
+// 그리곤 todo로받은 데이터를 map을 돌려 onetodo를 생성해줄것이다.
+
+
+    // onPressAddTodo 라는 함수를 생성후 event를 받는데 왜 event를 받을까 이 생성된 함수는 어디로 가야할까 
+    // form에 SUBMITevent로 이동할것이다 이렇게 되면 버튼을 누르면 자동으로 인풋애 입력한 입력값들을 받을수이싿
+    // 생성된 함수에 내가 멍청하게 어떤 기능도 아닌데 화살표함수를 먼저 때렸다
+    // 나는 newtodo로 새로 넣어줄 객체를 생성해주는것이맞다.
+    // 그래 newTodo라는 객체를 생성해줬어 이제 어떻게 해야할까
+    // 복사본 배열(전개연산자에) 넣어줘야한다 ...todo,NewTodo
+    // 이사실은 알고있었음에 어디에 넣어줘야할지 고민했다 이로직은 함수의 상태를 변경시켜주야하지때문에
+    // setTodo로 값을 전달시켜주어야한다 setTodo(...todo,NewTodo)
+    // 그리고 input의 name 키값을 입력해주는것은 필수이다 왜냐하면 내가 위에서 event.target.title.value,
+    // title. 이라고 내가 작성했다 그럼 값을 찾을수있게해줘야ㅈ 
+    // 그리곤 어떻게 해야할까 아 생각도못했네 추가 완료 거기에 더해 하나 추가했으면 모달 창닫는거까지
+    // 추가후 모달창 자동 닫힘 =  setisOpenAddtodoModal(false);
+
+이제 삭제버튼을 구현해볼것이다.
+삭제버튼은 어떤게 필요할까
+삭제 버튼 자체가 일단 oneTOdo자체에있는것을 확인할수있다 oneTOdo로 이동
+
+
+
+
+
+
+
+
+
+
+
+
+원래는 input이 두개가있어 그게 바로 보여질테지만 나는 이걸 두개의 컴포넌트 
+SignInform과 SignUpForm을 나누어 줄것이다
+
+회원가입 폼을 먼저 만들것인데 전에 내가 FormInput을 컴포넌트로 분리하여 props를 전달받아 사용했는데
+굳이 필요할까..? 이렇게 하는게? 이렇게 하는것 말고 다른 방법을 찾아보자 그닥 효울적으로 보이지 않는다.
+
+일단 나 혼자 만드는것니까 두개 따로따로 만들어 볼거야
+먼저 signInForm에 input 두개를 form으로 감싸줄거야
+!! 여기서 form 으로 감싸는 이유는 왜일까
+  왜 감쌌어? <>fragment도 있잖아
+
+---
+
+onsubmit="func()" 에서 func()는 반드시 true와 false를 리턴하도록 만들어줘야 한다. 
+true나 false를 반환해 주지 않는다면, 값이 어떻든 간에 그냥 action에 지정된 값으로 넘어가기 때문이다.
+따라서, onsubmit이라는 속성을 사용하는 이유에 대해 다시 한번 생각해본다면(유효성 검사말이다!) 
+결과값을 리턴해주도록 함수를 구성하는 것이 사용 목적에 부합한다고 볼 수 있다.
+
+---
+
+일단 계속 진행해보자
+input만들어가면 모를까 style이 있는 inputbox에 input이 들어가있다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 나는 페이지가 두개 필요해
 
 1. 나는 페이지가 2개 필요해  -> router
 // npm i react-router-dom
 
 위에가 필요한것을 알았으니 react-router-dom 공식문서로 들어가 -> getting start
+2. createBrowserRouter 와 RouterProvider 가 필요하다는것을 알았다.
 
 
 
