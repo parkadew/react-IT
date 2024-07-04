@@ -6,10 +6,11 @@ const OneTodo = ({ todo, todos, setTodos, updateTodo }) => {
   const onPressDeleteTodo = () => {
 
     const deleteTodo = (todoId) => {
+      // todos는 처음에 map을 돌릴때 받은 매개변수
       // deleteTodo 에 매개변수로 todoId를 받았넹? 어디에쓰려고 -> 이거는 위에
       // onPressDeleteTodo 함수 즉 밑에 버튼에 onClick 이벤트를 부여해서 클릭하면 onPressDeleteTodo에 값이 전달되는거야
       // 그렇게 클릭된 데이터 todos데이터 배열이 전달되었지 내가 임의로 적은 todoId에 그렇게 전달 받은 todoId를
-      //(filter로 todo.id를 통해 id를 찾아내는거구나)
+      // (filter로 todo.id를 통해 id를 찾아내는거구나)
       // 일단 filterTodo를 선언해준 후 todos를 고차함수 filter를 사용해서 임의의 매개변수 todo => 임의의 todos에 요소값이 들어오는거다
       // 그 요소값이랑 이제 비교를 하는거야 요소 id랑 내가 클릭해서 받아온 todoId의 값을 
       // 나는 100000로 random을 돌렸기때문에 당연히 겹칠일이없을테고 
@@ -36,8 +37,6 @@ const OneTodo = ({ todo, todos, setTodos, updateTodo }) => {
 
   const onPressChangeEditMode = () => {
     setIsEditMode(true);
-
-
     // selectTodo = { ...selectTodo, content: content.current.value }
     // temp.todos.find((todo) => todo.id === todoId)
     // const temp_todos = [...todos]

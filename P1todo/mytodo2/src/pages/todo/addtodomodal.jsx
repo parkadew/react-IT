@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 const AddTodoModal = ({ setisOpenAddtodoModal, todo, setTodo }) => {
 
@@ -25,6 +26,7 @@ const AddTodoModal = ({ setisOpenAddtodoModal, todo, setTodo }) => {
     // title. 이라고 내가 작성했다 그럼 값을 찾을수있게해줘야ㅈ 
     // 그리곤 어떻게 해야할까 아 생각도못했네 추가 완료 거기에 더해 하나 추가했으면 모달 창닫는거까지
     // 추가후 모달창 자동 닫힘 =  setisOpenAddtodoModal(false);
+    // 오류 발생 -- 지금 새로입력한 내용이 추가가 안되고 모달만 추가가된다. setTodo([...todo, NewTodo]) 이게 문제일텐데
 
     return (
         <S.Modal>

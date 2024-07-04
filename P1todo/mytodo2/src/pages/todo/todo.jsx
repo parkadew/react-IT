@@ -12,8 +12,6 @@ import AddTodoModal from "./addtodomodal";
 // 그리고 받은 데이터로 onetodo를 생성해줄거야
 // 그리곤 todo로받은 데이터를 map을 돌려 생성해줄거야
 
-
-
 const Todo = () => {
 
     const [isOpenAddtodoModal, setisOpenAddtodoModal] = useState(false);
@@ -33,10 +31,9 @@ const Todo = () => {
     ]);
 
     return <S.Wrapper>
-        {isOpenAddtodoModal && <AddTodoModal setisOpenAddtodoModal={setisOpenAddtodoModal} todo={todo} setTodo={setTodo}></AddTodoModal>}
+        {isOpenAddtodoModal && <AddTodoModal todo={todo} setTodo={setTodo} setisOpenAddtodoModal={setisOpenAddtodoModal} ></AddTodoModal>}
         <S.Container>
             <S.Title>TODOLIST</S.Title>
-
             <Todolist todo={todo} setTodo={setTodo} />
             <button onClick={() => { setisOpenAddtodoModal(true) }}>추가</button>
         </S.Container>
