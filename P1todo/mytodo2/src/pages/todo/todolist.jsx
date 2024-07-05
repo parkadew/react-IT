@@ -8,6 +8,7 @@ const Todolist = ({ todo, setTodo }) => {
     return (
         <S.Wrapper>
             {todo.map((todos) => (
+                // 조회 -> todo.map을 통해 mock데이터를 전부 순회 하였으며 새로운 복사본 배열인 todos생성
                 <OneTodo key={todos.id} todos={todos} todo={todo} setTodo={setTodo} />
             ))}
         </S.Wrapper>

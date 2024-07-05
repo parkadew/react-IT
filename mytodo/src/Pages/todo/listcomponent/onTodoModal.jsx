@@ -46,7 +46,7 @@ const OneTodo = ({ todo, todos, setTodos, updateTodo }) => {
   const onPressEdit = () => {
     setIsEditMode(false);
     updateTodo({
-      todoId: todo.id,
+      todoId: todo.id, // 왜 또 map 을 돌리기 전의 todo를 사용한것일까
       content: contentRef.current.value,
     })
   };
