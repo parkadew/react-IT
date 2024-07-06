@@ -29,7 +29,6 @@ const Todo = () => {
             state: false
         },
     ]);
-
     return <S.Wrapper>
         {isOpenAddtodoModal && <AddTodoModal todo={todo} setTodo={setTodo} setisOpenAddtodoModal={setisOpenAddtodoModal} ></AddTodoModal>}
         <S.Container>
