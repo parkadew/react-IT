@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 
 const OneTodo = ({ todo, setTodo, todos }) => {
+  // 근데 나는 항상 객체로 넘겨줬는데..
 
   const contentref = useRef();
 
@@ -87,22 +88,26 @@ const OneTodo = ({ todo, setTodo, todos }) => {
     // 수정 모드가 아닐떄 수정모드로 변경 시켜주는 함수
     // 수정 모드를 어떻게 정의 할것인가
     // 모달창을 띄워서 수정 시키는것 => 전역 상태관리를 배워야지만 수정가능하다
-
   };
   const onPressEditMdoe = () => {
-    setisEditMode(false);
     updateTodo({
-      todoId: todo.id,
+      todoId: todos.id,
       content: contentref.current.value,
     })
+    setisEditMode(false);
     // 수정이 된 새로운 배열이 들어와야한다.
     // 밑으로 구조 분해 할당을 통해 전달 한것이다.
   }
 
   const updateTodo = ({ todoId, content }) => {
-    const temp_todos = [...todos]
+    const temp_todos = [...todo]
     // todos is not iterable 이라는 오류가 발생했다.
-    const selectTodo = temp_todos.findIndex((todo) => todo.id !== todoId)
+    const selectTodo = temp_todos.findIndex((todoe) => todoe.id === todoId)
+    //!== -> === 로 수정 왜? 처음 부터 잘못되어있었네
+    //!== 조건은 todo.id가 todoId와 다르지 않은 첫 번째 요소의 인덱스를 찾습니다.
+    // 이 조건은 수정하려는 특정 todo를 찾는 것이 아니라!
+    // todoId와 다른 첫 번째 todo를 찾는 것입니다.
+    // 왜 다른 첫번째 todd를 찾게되는것일까
     temp_todos[selectTodo] = {
       ...temp_todos[selectTodo],
       content,
