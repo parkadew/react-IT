@@ -28,7 +28,6 @@ function Comment({ post, setPost }) {
   // 그럼 이제 추가하는 로직을 만들어보자
   // 추가 버튼은 state2파일에 있기때문에 거기서 만드는게 좋을것같다
 
-
   // 나는 여기가 todolist
   return (
     <S.CommentItem>
