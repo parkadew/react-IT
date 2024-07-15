@@ -14,8 +14,6 @@ const AddTodoModal = ({ setisOpenAddtodoModal, todo, setTodo }) => {
     setTodo([...todo, NewTodo])
     setisOpenAddtodoModal(false);
   }
-
-
   // onPressAddTodo 라는 함수를 생성후 event를 받는데 왜 event를 받을까 이 생성된 함수는 어디로 가야할까 
   // form에 SUBMITevent로 이동할것이다 이렇게 되면 버튼을 누르면 자동으로 인풋애 입력한 입력값들을 받을수이싿
   // 생성된 함수에 내가 멍청하게 어떤 기능도 아닌데 화살표함수를 먼저 때렸다

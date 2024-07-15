@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const AccountForm = () => {
-
     return <Form>
         <Input placeholder="id"></Input>
         <Input placeholder="password"></Input>

@@ -12,7 +12,6 @@ const SignInForm = () => {
         if (email === "test" && password === "test") {
             return navigate("/todo")
         }
-
     }
     // onsubmit해서 그 함수에 event를 전달하는것이 목적이니 event를 받아야지
     // 어떤 event가 올까 예상해보면 
