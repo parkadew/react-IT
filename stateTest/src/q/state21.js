@@ -12,7 +12,7 @@ function State2() {
     Q2. 댓글 작성 수정 삭제 기능을 구현해보세요 :)
             1. 댓글 작성 기능
             2. 댓글 수정 기능
-            3. 댓글 삭제 기능 ( 본인이 작성한 댓글만 삭제할 수 있습니다, myComment 활용 )
+            3. 댓글 삭제 기능 
     */
   const [post, setPost] = useState({
     title: "안녕하세요 여러분 김성용 강사입니다 :)",
@@ -67,8 +67,6 @@ function State2() {
   const idpost = post.Comments.map((l) => ({
     ...l, id: Math.floor(Math.random() * 10000)
   }))
-
-
 
 
 

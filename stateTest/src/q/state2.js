@@ -67,7 +67,6 @@ function State2() {
     //   ...prevPost,
     //   Comments: [...prevPost.Comments, { ...comment, id: newId }]
     // }));
-
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,7 +74,6 @@ function State2() {
     setNickname('');
     setContent('');
   };
-
   const [nickname, setNickname] = useState('');
   const [content, setContent] = useState('');
 
@@ -85,13 +83,12 @@ function State2() {
     const deletepost = { ...post };
     deletepost.Comments = post.Comments.filter((comment) => comment.id !== id)
     setPost(deletepost)
-    // setPost(prevPost => ({
-    //   ...prevPost,
-    //   Comments: prevPost.Comments.filter(comment => comment.id !== id)
-    // }));
   };
 
   //---- 수정
+
+
+
 
 
   return (
@@ -129,7 +126,7 @@ function State2() {
       </div>
 
       <S.CommentList>
-        <Comment post={post} setpost={setPost} deleteComment={deleteComment} />
+        {post.Comments.map((data) => <Comment data={data} post={post} setpost={setPost} deleteComment={deleteComment} />)}
       </S.CommentList>
     </S.Wrapper >
   );
