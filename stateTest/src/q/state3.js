@@ -20,7 +20,6 @@ function State3() {
       상세페이지 주소에는 클릭한 상품의 상품번호가 노출되어야 합니다
       해당 router (주소설정)은 제가 모두 app.js에 해두었습니다
 
-
       ex) /state/detail/301389
 
       해당 상품번호를 주소에서 부터 받아와야합니다.
@@ -38,13 +37,16 @@ function State3() {
     4.  상세 페이지에서는 페이지의 상세 내용을 확인할 수 있으며
         구매평을 추가할 수 있습니다 (수정 및 삭제는 state2에서 풀이하였으므로 구현하지 않아도 괜찮습니다)
   */
+  // 1. 우선 상품 목록 화면을 구현하여 모든 상품 정보를 표시하자.
+  //
 
   console.log(productList);
-
   const navigate = useNavigate();
 
-  const onNavigateDetailPage = () => {
-    navigate(`/detail/1`);
+  //----- 조회
+
+  const onNavigateDetailPage = (productNumber) => {
+    navigate(`/detail/${productNumber}`);
   };
 
   return (
@@ -52,9 +54,13 @@ function State3() {
       <h1>문제3</h1>
       <h2>상품 목록</h2>
       <ul>
-        {/* list */}
-        {/* 예시 데이터 */}
-        <ProductCard onNavigate={onNavigateDetailPage} />
+        {productList.products.map((product) => (
+          <ProductCard
+            key={product.productNumber}
+            product={product}
+            onNavigate={onNavigateDetailPage}
+          />
+        ))}
       </ul>
     </>
   );

@@ -85,7 +85,7 @@ function State2() {
     setPost(deletepost)
   };
 
-  //---- 수정
+
 
 
 
@@ -126,7 +126,7 @@ function State2() {
       </div>
 
       <S.CommentList>
-        {post.Comments.map((data) => <Comment data={data} post={post} setpost={setPost} deleteComment={deleteComment} />)}
+        {post.Comments.map((data) => <Comment data={data} post={post} setPost={setPost} deleteComment={deleteComment} />)}
       </S.CommentList>
     </S.Wrapper >
   );
