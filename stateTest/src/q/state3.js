@@ -4,7 +4,50 @@ import ProductCard from "./components/product";
 import productList from "../__mock__/products.json";
 
 function State3() {
-  /*
+
+  const navigate = useNavigate();
+
+  const onNavigateDetailPage = (productNumber) => {
+    navigate(`/detail/${productNumber}`);
+  };
+
+  return (
+    <Container>
+      <Title>상품 목록</Title>
+      <ProductList>
+        {productList.products.map((product) => (
+          <ProductCard
+            key={product.productNumber}
+            product={product}
+            onNavigate={onNavigateDetailPage}
+          />
+        ))}
+      </ProductList>
+    </Container>
+  );
+}
+
+export default State3;
+
+const Container = styled.div`
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  color: #333;
+`;
+
+const ProductList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+`;
+
+/*
     문제 3.
     심화문제 입니다
     아래는 가상의 커머스 사이트 mock data입니다
@@ -15,7 +58,7 @@ function State3() {
         단, 가격표는 3자리마다 ,를 작성해야합니다.
 
     2. 해당 상품을 클릭하면 상세 페이지로 이동합니다.
-    
+
     3.
       상세페이지 주소에는 클릭한 상품의 상품번호가 노출되어야 합니다
       해당 router (주소설정)은 제가 모두 app.js에 해두었습니다
@@ -37,43 +80,6 @@ function State3() {
     4.  상세 페이지에서는 페이지의 상세 내용을 확인할 수 있으며
         구매평을 추가할 수 있습니다 (수정 및 삭제는 state2에서 풀이하였으므로 구현하지 않아도 괜찮습니다)
   */
-  // 1. 우선 상품 목록 화면을 구현하여 모든 상품 정보를 표시하자.
-  //
-
-  console.log(productList);
-  const navigate = useNavigate();
-
-  //----- 조회
-
-  const onNavigateDetailPage = (productNumber) => {
-    navigate(`/detail/${productNumber}`);
-  };
-
-  return (
-    <>
-      <h1>문제3</h1>
-      <h2>상품 목록</h2>
-      <ul>
-        {productList.products.map((product) => (
-          <ProductCard
-            key={product.productNumber}
-            product={product}
-            onNavigate={onNavigateDetailPage}
-          />
-        ))}
-      </ul>
-    </>
-  );
-}
-export default State3;
-
-const Item = styled.li`
-  border: 1px solid #000;
-  cursor: pointer;
-  width: 300px;
-  margin: 16px auto;
-`;
-
-const S = {
-  Item,
-};
+// 1. 우선 상품 목록 화면을 구현하여 모든 상품 정보를 표시하자. O
+// 2. 디테일페이지에서 내가 보여줄 정보를 정해야한다   detail page -> reviwer
+// 3. 해당 데이터를 찾아내어 state로 관리해야지 화면에 렌더링 되는것을 불수있다
