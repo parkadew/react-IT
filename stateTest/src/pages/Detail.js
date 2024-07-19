@@ -5,8 +5,9 @@ import productList from "../__mock__/products.json";
 
 function DetailPage() {
   const { productNumber } = useParams();
+
   const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState();
 
   useEffect(() => {
     const foundProduct = productList.products.find(
