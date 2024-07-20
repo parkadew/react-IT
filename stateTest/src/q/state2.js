@@ -14,6 +14,7 @@ function State2() {
     },
     Comments: [
       {
+        id: 1,
         User: {
           nickname: "김사과",
         },
@@ -21,6 +22,7 @@ function State2() {
         myComment: false,
       },
       {
+        id: 2,
         User: {
           nickname: "반하나",
         },
@@ -28,6 +30,7 @@ function State2() {
         myComment: false,
       },
       {
+        id: 3,
         User: {
           nickname: "오렌지",
         },
@@ -35,6 +38,7 @@ function State2() {
         myComment: false,
       },
       {
+        id: 4,
         User: {
           nickname: "이멜론",
         },
@@ -42,6 +46,7 @@ function State2() {
         myComment: false,
       },
       {
+        id: 5,
         User: {
           nickname: "박수박",
         },
@@ -50,6 +55,29 @@ function State2() {
       },
     ],
   });
+  // 댓글 추가 로직 
+  const addComment = (comment) => {
+    const newId = Math.floor(Math.random() * 10000);
+    const addComment = { ...post, Comments: [...post.Comments, { ...comment, id: newId }] }
+    setPost(addComment);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addComment({ content, User: { nickname } });
+    setNickname("");
+    setContent("");
+  }
+  const [nickname, setNickname] = useState();
+  const [content, setContent] = useState();
+
+  //--------------삭제 -> Comment
+
+  const deleteComment = (id) => {
+    const deletepost = { ...post };
+    deletepost.Comments = post.Comments.filter((comment) => comment.id !== id)
+    setPost(deletepost)
+  }
+
 
   return (
     <S.Wrapper>
@@ -73,13 +101,15 @@ function State2() {
         <p>
           댓글 수: <span>{post.Comments.length}</span>
         </p>
-        <input placeholder="작성자" />
-        <input placeholder="댓글 내용" />
-        <button>댓글 작성</button>
+        <form onSubmit={handleSubmit}>
+          <input value={nickname} onChange={(e) => setNickname(e.target.value)} name='nickname' placeholder="작성자" />
+          <input value={content} onChange={(e) => setContent(e.target.value)} name='content' placeholder="댓글 내용" />
+          <button>댓글 작성</button>
+        </form>
       </div>
       <S.CommentList>
 
-        {post.Comments.map((data) => <Comment data={data} />)}
+        {post.Comments.map((data) => <Comment data={data} post={post} deleteComment={deleteComment} setPost={setPost} />)}
 
       </S.CommentList>
     </S.Wrapper>

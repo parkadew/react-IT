@@ -1,150 +1,93 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import productList from "../__mock__/products.json";
 
-function DetailPage() {
-  const { productNumber } = useParams();
 
+function DetailPage() {
+  const params = useParams();
+  console.log(params.productNumber);
+  // useParams를 통해 가져온 현재 제품 번호
   const navigate = useNavigate();
-  const [product, setProduct] = useState();
+  const [product, setproduct] = useState();
 
   useEffect(() => {
     const foundProduct = productList.products.find(
-      (product) => product.productNumber === productNumber
+      (product) => params.productNumber === product.productNumber
     );
+    //product.productNumber 각 객체의 고유 번호와 Url로 추출된 현재 상품 번호를 비교하여 같은 것이있다면foundProduct  에 저장할것이다.
     if (foundProduct) {
-      setProduct(foundProduct);
+      setproduct(foundProduct);
     } else {
       navigate("/");
     }
-  }, [productNumber, navigate]);
+    // 만약 조건에 맞는 foundProduct 가 있다면 setproduct상태에 foundProduct로 업데이트 할것이다 
+    // -> 그게 아니라면 다시 /페이지로 돌아간다
+  }, [params.productNumber]);
+  //(useEffect로 의존성 배열에 값이 변경될때마다 재실행된다.
+
 
   if (!product) {
     return;
   }
+  // 이걸 해주는 이유는 product위에 상태를 설정할때 초기값이 없기때문에 undefiend 가발생한다 그러므로 
+  // find 메서드를 사용하여 일치하는 제품을 찾고, setProduct를 호출하여 product 상태를 업데이트하기 전까지 화면을 보일수있게 해준다.
+  // 즉 product 상태가 업데이트되기 전까지 화면에 오류가 발생하지 않도록 해준다.
+
+  const onPressNewReview = (event) => {
+    //useref를 통해 인풋값을 참조하는 방식에서 event.target을 사용하여 폼의 입력값을 가져오는 방식을 택했다.
+    event.preventDefault();
+    const Detaildata = { ...product };
+    // 전개연산자를 통해 product기존 객체 데이터를 복사하여 Detaildata에 담는다.
+    // 이렇게 하면 기존 상태를 직접 수정하지 않고, 새로운 상태를 생성할 수 있다.
+    const { reviewer, review, rating } = event.target;
+    //event.target에서 폼의 입력 요소들을 구조분해할당을 통해 가져온다. event.target= 폼 요소
+    // event.target 내의 각 입력 필드를 변수에 할당한것이기떄문에 이 변수들{ reviewer, review, rating }은 input을 담고있다고 생각한다 .
+
+    const newReview = {
+      //새로운 리뷰
+      // 위에서 구조분해 할당을 통해 event.target 입력필드의 요소에 접근했으므로 value에만 접근한다
+      reviewer: reviewer.value,
+      review: review.value,
+      rating: rating.value,
+    };
+    Detaildata.Review = [...Detaildata.Review, newReview];
+    // tempDetail.Review 배열에 새로운 리뷰를 추가한다. 전개연산자로 기존 리뷰 배열뒤에 새로운 리뷰를 추가한다.
+
+    // 입력필드 초기화
+    setproduct(Detaildata);
+    reviewer.value = "";
+    review.value = "";
+    rating.value = "";
+  };
+
+  //---
 
   return (
-    <Container>
-      <Card>
-        <h1>{product.productName}</h1>
-        <ProductInfo>상품번호: {product.productNumber}</ProductInfo>
-        <ProductInfo>가격: {product.productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</ProductInfo>
-        <ProductInfo>사이즈: {product.productSize}</ProductInfo>
-        <ProductInfo>평점: {product.productRating}</ProductInfo>
-        <ProductInfo>리뷰: {product.productReview}</ProductInfo>
-      </Card>
-      <Card>
-        <h2>상세 정보</h2>
-        <p>{product.productDetail.productDetailInfo}</p>
-      </Card>
-      <Card>
-        <h2>구매 후기</h2>
-        {product.Review.map((review, index) => (
-          <Review key={index}>
-            <Reviewer>작성자: {review.reviewer}</Reviewer>
-            <ReviewText>리뷰: {review.review}</ReviewText>
-            <ReviewRating>평점: {review.rating}</ReviewRating>
-          </Review>
-        ))}
-      </Card>
-      <Card>
-        <h2>리뷰 작성</h2>
+    <div>
+      <h1>{product.productName}</h1>
+      <p>상품번호: {product.productNumber}</p>
+      <p>가격: {product.productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
+      <p>사이즈: {product.productSize}</p>
+      <p>평점: {product.productRating}</p>
+      <p>리뷰: {product.productReview}</p>
+      <h2>상세 정보</h2>
+      <p>{product.productDetail.productDetailInfo}</p>
+      <h2>구매 후기</h2>
 
-      </Card>
-    </Container>
+      {product.Review.map((review, index) => (
+        <div key={index}>
+          <div>작성자: {review.reviewer}</div>
+          <div>리뷰: {review.review}</div>
+          <div>평점: {review.rating}</div>
+        </div>
+      ))}
+      <form onSubmit={onPressNewReview}>
+        <input name='reviewer' placeholder="작성자"></input>
+        <input name='review' placeholder="리뷰"></input>
+        <input type='number' name='rating' placeholder="평점" min='1' max='5'></input>
+        <button>추가</button>
+      </form>
+    </div >
   );
 }
-
 export default DetailPage;
-
-const Container = styled.div`
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-`;
-
-const Card = styled.div`
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  h1, h2 {
-    color: #333;
-    margin-bottom: 15px;
-  }
-
-  p {
-    color: #666;
-    margin: 10px 0;
-    font-size: 1.1rem;
-  }
-`;
-
-const ProductInfo = styled.p`
-  font-size: 1rem;
-`;
-
-const Review = styled.div`
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-  margin-top: 10px;
-
-  &:first-of-type {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }
-`;
-
-const Reviewer = styled.p`
-  font-weight: bold;
-`;
-
-const ReviewText = styled.p`
-  
-`;
-
-const ReviewRating = styled.p`
-  color: #ff9529;
-`;
-
-const ReviewForm = styled.form`
-  display: grid;
-  gap: 10px;
-`;
-
-const Input = styled.input`
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-`;
-
-const Button = styled.button`
-  padding: 12px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #555;
-  }
-`;
