@@ -1,9 +1,12 @@
 
+
 const express = require('express')
 // package.json --> type = 'module' --> require(x)
+import user from "./routes/user"
 
 const app = express()
 app.use(express.json())
+app.use('/user', user)
 // port를 정할떄 기준, 이미 사용중인 포트는 사용안됨
 
 app.get('/test/:testId', (req, res) => {
@@ -34,4 +37,3 @@ app.listen(3030, () => {
     console.log("start server : 3030")
 })
 // app.listen(port,callback)
-
