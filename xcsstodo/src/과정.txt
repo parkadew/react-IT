@@ -1,0 +1,96 @@
+먼저 간단하게 설계해보자
+페이지를 간단하게 설계하고 가보자
+
+   나는 main 페이지에 
+   input을 두개 만들고 id:test, pw:test/ 여야지만 todo페이지로 이동할수있게끔 만들것이다.
+
+   todo 페이지에서는
+   todo를 조회하고, 생성하고, 삭제하고, 수정할거야
+
+페이지가 main / todo 두개가 필요하다 
+이떄 페이지를 이동할수있도록 나는 router를 떠올려주어야한다.
+
+현재 진행할떄 app.js 최상위 컴포넌트에서 router를 사용할것이다.
+router를 사용하기 위해 공식문서의 사용법을 확인하면
+createBrowserRouter, RouterProvider가 필요하다는것을 알수있다
+
+<RouterProvider router={router} />
+-> RouterProvider가 router 객체를 받아 애플리케이션에 라우팅 기능을 제공하여
+  사용자가 URL 경로에 따라 다른 페이지로 이동할 수 있게 하는 역할을 한다
+
+이렇게 먼저 하먄 router가 존재하지 않으니 보내준 props를받을 createBrowserRouter를 생성해주자
+const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <div>main</div>,
+    },
+    {
+      path: "/todo",
+      element: <div>todo</div>,
+    },
+  ]);
+
+-----
+ 
+  이제 element에 페이지가 되는 컴포넌트를 만들어줄것이다. 
+  >> pages 폴더에 main.js와 todo.js를 만들어주자
+    
+    페이지 폴더에 컴포넌트르 만들어준 후 
+    export해줄것이다 그리곤 router주소에 맞게끔 element에 page컴포넌트를 삽이해주면 된다.
+    자동 import되는지 확인해주고
+
+-------
+
+  - Home 컴포넌트 ( Home 컴포넌트에서는 무엇을 할것인가?)
+    input을 두개 만들고
+    id,pw 가 모두 test여야지만 todo page로 이동
+
+       <form>
+            <input></input>
+            <input></input>
+            <button>로그인</button>
+        </form>
+    이때 버튼이 눌리면 걊을 확인하고 페이지를 이동시키는 함수가 필요하다는것을 알아야한다.
+    input의 value를 가져오기 위해 evnet를 함수의 매개변수로 받아주어야한다.
+
+    formevent이기 때문에 button에 onclick이벤트가 아닌 form에 onsubmit이벤트가 
+    보내져야한다.
+    그리곤
+     <input name='id'></input>
+            <input name='password'></input>
+            input의 name에 맞추어 input의 값을 가져올수있다.
+
+            const id = event.target.id.value;
+            const password = event.target.password.value;
+    
+    그리곤 위에서 언급했던 데로
+     id:test, pw:test/ 여야지만 todo페이지로 이동할수있게끔 만들것이다.
+
+     if (id === 'test' && password === 'test') {
+
+        }
+        그리곤 if return에 true면 navigate('/todo')
+        를 하게 되면 이동까지 완벽하다
+
+-----
+
+todo페이지
+
+어떤걸 먼저해야할까 먼저 데이터를 조회하는것이 먼저이다.
+그러려면 백엔드가 없기 때문에 조회할 가상데이터를 만들어줘야한다.
+
+그리곤 return에 조회할 데이터를 map을 돌려 표시해주면 된다.
+ {TODOS.map((todo) => (<div>{todo.title}</div>))}
+
+
+
+
+    
+
+
+
+
+    
+
+
+

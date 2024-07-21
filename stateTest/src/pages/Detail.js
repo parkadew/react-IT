@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import productList from "../__mock__/products.json";
 
-
 function DetailPage() {
   const params = useParams();
   console.log(params.productNumber);
