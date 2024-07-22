@@ -1,20 +1,26 @@
+import { useState } from "react"
+import Addtodo from "../components/add-todo"
+import Todolist from "../components/todo-list"
 
 function Todo() {
-    const TODOS = [
-        {
-            id: 1,
-            title: "example-1",
-            content: "example-1-1"
-        },
-        {
-            id: 2,
-            title: "example-2",
-            content: "example-1-2"
-        },
-    ]
+    const [TODOS, setTODOS] = useState(
+        [
+            {
+                id: 1,
+                title: "example-1",
+                content: "example-1-1"
+            },
+            {
+                id: 2,
+                title: "example-2",
+                content: "example-1-2"
+            },
+        ]
+    )
     return (
         <>
-            {TODOS.map((todo) => (<div>{todo.title}</div>))}
+            <Addtodo TODOS={TODOS} setTODOS={setTODOS} />
+            <Todolist TODOS={TODOS} setTODOS={setTODOS} />
         </>
     )
 

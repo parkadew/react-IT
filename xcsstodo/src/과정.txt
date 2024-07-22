@@ -78,11 +78,34 @@ todo페이지
 
 어떤걸 먼저해야할까 먼저 데이터를 조회하는것이 먼저이다.
 그러려면 백엔드가 없기 때문에 조회할 가상데이터를 만들어줘야한다.
-TODOS라는 데이터를 페이지 자체에 만들어주었다.
-
+TODOS라는 데이터를 todo페이지 자체에 만들어주었다.
 
 그리곤 return에 조회할 데이터를 map을 돌려 표시해주면 된다.
- {TODOS.map((todo) => (<div>{todo.title}</div>))}
+ {TODpOS.ma((todo) => (<div>{todo.title}</div>))}
+
+ -----
+
+ 그리고 todo페이지에 보여줄 todolist와 add-todo를 컴포넌트화 시켜준후 
+ todopage컴포넌트를 가져와주자
+
+----
+
+(create)생성은 어디서 해야할까 -> 
+todopage? addtodopage? todolistpage?
+-> 내 생각에는 todolist 페이진데 왜 addtodo 페이지지
+이건 어떻게 생성할지에 따라 다른거 같아
+내가 떠올린건 추가 시킬때 추가 버튼을 누르면 todolist에서 모달 창이 떠서 추가될줄알았는데 그게아니니ㅏㄲ
+
+  **왜 상태여야하는지 생각하는방법
+    - 원래라면 TODOS데이터에
+      데이터를 추가하기위해서 TODOS.push(newTodo)를 해야할것이다.
+      TODOS.map 조회했으니까 데이터가 하나 추가되겠네??
+      하지만 리액트는 변수값이 바뀐다고 화면이 바뀌지 않는다 -> 상태여애하네!!
+
+-------
+
+one todo를 생성해야하는 이유
+
 
 
 
