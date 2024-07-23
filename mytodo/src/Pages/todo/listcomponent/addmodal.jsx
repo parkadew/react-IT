@@ -4,15 +4,10 @@ import React from "react";
 
 
 const AddTodoModal = ({ setisOpenAddTodoModal, todos, setTodos }) => {
-  //너가 생각해봐 state를 true로 하니까 modal창이 나왔어 그럼?false로 하면 닫히겠지
+
   const onPressAddTodo = (event) => {
     event.preventDefault();
-    /*
-    setTodos([...todos,newTodo]) 가 필요한데 왜필요할까
-    배열안에 전개연산자..
-    아 처음에 말했지 setTodos 상태에 ...todos전에 있던 데이터에 새로 생성한 데이터newTodo를 넣어 덮어씌우는것이라고
-    */
-    const newTodo = {
+    newTodo = {
       id: Math.floor(Math.random() * 10000000),
       title: event.target.title.value,
       content: event.target.content.value,
