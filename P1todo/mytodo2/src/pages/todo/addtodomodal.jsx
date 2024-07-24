@@ -14,7 +14,6 @@ const AddTodoModal = ({ setisOpenAddtodoModal, todo, setTodo }) => {
     setTodo([...todo, NewTodo])
     setisOpenAddtodoModal(false);
   }
-
   // onPressAddTodo 라는 함수를 생성후 event를 받는데 왜 event를 받을까 이 생성된 함수는 어디로 가야할까 
   // form에 SUBMITevent로 이동할것이다 이렇게 되면 버튼을 누르면 자동으로 인풋애 입력한 입력값들을 받을수이싿
   // 생성된 함수에 내가 멍청하게 어떤 기능도 아닌데 화살표함수를 먼저 때렸다
@@ -53,10 +52,6 @@ const AddTodoModal = ({ setisOpenAddtodoModal, todo, setTodo }) => {
     // 여기에 추가되는 로직이 만들어져야한다
     // 추가되는 로직 첫번쨰 추가 로직은 그리 복잡하지않는다 이건 외워도 될거같다
     // 복사본 배열을 생성해(전개연산자) 그 뒤에 새로 만들어질 배열을 추가해준다
-
-
-
-
 
   )
 }

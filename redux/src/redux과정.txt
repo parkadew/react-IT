@@ -1,0 +1,10 @@
+
+redux를 시작하려면 공식문서를 확인 후
+
+npm install @reduxjs/toolkit 
+npm install react-redux
+
+store를 만들걸 확인할수있다.
+
+
+

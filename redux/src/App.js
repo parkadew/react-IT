@@ -1,24 +1,19 @@
-import { Provider } from 'react-redux'
+// import logo from './logo.svg'; //--> 원래 기본으로 있던 create-react-app 의 기본 페이지 로고 가져오는 거라 주석 처리 해준 것 (삭제해줘도 됨)
 import './App.css';
-import { createStore } from 'redux'
-import { rootReducer } from "./reducer/root"
-import Todo from './todo.jsx/todo';
-
-const store = createStore(rootReducer);
-//1. 여기가 중앙 저장소 생성
-// createStore(reducer) createStore 안에 reducer가 들어와야한다
-
-// 3. rootReducer와 합칠 reducer들을 생성 
-// 4. createStore rootReducer 전달
-// 사용 준비 끝
-
+import { RouterProvider } from 'react-router-dom';
+import router from "./libs/routes/router"  //-->  export default 로 추출해줬기에 이름 마음대로 설정 가능한 것을 확인 가능
+import { ThemeProvider } from 'styled-components';
+import { theme } from './libs/styles/theme';
+import { Provider } from 'react-redux '
 function App() {
   return (
-    <Provider store={store}>
-      {/*2. 전역상태관리를 위한 프로바이더 생성*/}
-      <Todo />
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </ThemeProvider>
   );
 }
 
 export default App;
+
