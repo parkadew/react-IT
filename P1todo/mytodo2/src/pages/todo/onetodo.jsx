@@ -22,7 +22,7 @@ const OneTodo = ({ todo, setTodo, todos }) => {
       // 애초에 이거 해석하기를 삭제버튼을 누른 해당 onetodo를 제외시킨다가 아닌
       //  X 버튼을 눌렀을 때 해당 투두아이템을 제외하고 투두리스트를 화면에 보여줌으로써 삭제 기능을 구현한다.
       // 라고 이해해보면 어떨까? / 결과적으로 삭제 버튼을 눌렀을 때 todoList에서 해당하는 아이템이 제외된 채로 새로운 todoList가 만들어진다.
-      //
+
       //filter의 영향으로
       // 왜 굳이 전에 생성한 todo 와 map을 돌려 생성한 todos의 id르 비교하는거야?
       // 앞의 todo의 배열의 아이디와  deleteTodo를 통해 전달받은 todos의 id
