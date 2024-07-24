@@ -53,6 +53,11 @@ const AddTodoModal = ({ setisOpenAddtodoModal, todo, setTodo }) => {
     // 여기에 추가되는 로직이 만들어져야한다
     // 추가되는 로직 첫번쨰 추가 로직은 그리 복잡하지않는다 이건 외워도 될거같다
     // 복사본 배열을 생성해(전개연산자) 그 뒤에 새로 만들어질 배열을 추가해준다
+
+
+
+
+
   )
 }
 export default AddTodoModal
