@@ -4,8 +4,33 @@ import { RouterProvider } from 'react-router-dom';
 import router from "./libs/routes/router"  //-->  export default 로 추출해줬기에 이름 마음대로 설정 가능한 것을 확인 가능
 import { ThemeProvider } from 'styled-components';
 import { theme } from './libs/styles/theme';
-import { Provider } from 'react-redux '
+import { Provider } from 'react-redux'
+import { store } from './store/store';
+// import { server } from './mocks/server';
+// import { useEffect, useState } from 'react';
+
 function App() {
+
+  // const [isMswinit, setISmswInit] = useState(false);
+  // useEffect(() => {
+
+  //   async function initiallizeMSW() {
+  //     if (!isMswinit && process.env.NODE_ENV === "development") {
+  //       await server.start();
+  //       setISmswInit(true);
+  //       // 강제리렌더링
+  //     }
+  //   }
+  //   initiallizeMSW();
+  // }, [isMswinit]);
+
+  /*
+  npm install msw
+  npx msw init ./public
+  handlers.js -> server.js
+  app.js -> server.listen()
+  */
+
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>

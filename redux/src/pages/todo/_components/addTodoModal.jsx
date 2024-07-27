@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import { flexAlignCenter, flexCenter } from "../../../libs/styles/common";
 import TDButton from "../../../components/Button";
-import { useTodo } from "../../../store/todo.store";
+import { addTodo } from "../../../store/todo.slice";
+import { useDispatch } from "react-redux";
 
 
-const AddTodoModal = ({setIsOpenAddTodoModal}) => {
-    
-    const {todos, setTodos} = useTodo()
+const AddTodoModal = ({ setIsOpenAddTodoModal }) => {
 
-    const onPressAddTodo = (event) => {
-        event.preventDefault()
+    // const { todos, setTodos } = useTodo()
+    const dispatch = useDispatch()
+
+    const onPressAddTodo = async (event) => {
+        event.preventDefault();
+        await fetch("/")
 
         const newTodo = {
             id: Math.floor(Math.random() * 1000000),
@@ -18,7 +21,8 @@ const AddTodoModal = ({setIsOpenAddTodoModal}) => {
             state: false
         }
 
-        setTodos([...todos, newTodo])
+        // setTodos([...todos, newTodo])
+        dispatch(addTodo(newTodo));
         setIsOpenAddTodoModal(false)
     }
 
@@ -31,11 +35,11 @@ const AddTodoModal = ({setIsOpenAddTodoModal}) => {
                     {/*이 버튼은 submit이 되면 안되기에 type 을 button 이라고 명시해준 것이다*/}
                 </S.Title>
                 <S.Content>
-                    <input name="title" placeholder="제목을 입력해주세요"/>
-                    <textarea name="content" placeholder="할 일을 입력해주세요"/>
+                    <input name="title" placeholder="제목을 입력해주세요" />
+                    <textarea name="content" placeholder="할 일을 입력해주세요" />
                 </S.Content>
-                <TDButton 
-                    variant={'primary'}                
+                <TDButton
+                    variant={'primary'}
                     size={'full'}
                 >
                     ADD
@@ -45,7 +49,6 @@ const AddTodoModal = ({setIsOpenAddTodoModal}) => {
     )
 }
 export default AddTodoModal
-
 
 const Modal = styled.div`
     position: fixed;

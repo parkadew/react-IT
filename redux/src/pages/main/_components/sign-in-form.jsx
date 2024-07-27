@@ -25,23 +25,35 @@ const SignInForm = () => {
         resolver: yupResolver(signInFormSchema),
     })
 
-    const handlePressSignIn = (data) => {
-        if (data.email === "test@test.com" && data.password === "testtest") {
-            return navigate("/todo/3")
+    const handlePressSignIn = async (data) => {
+        try {
+            const response = await fetch("/api/user/login", {
+                //fetch는 자바스크립트에 내장된 빌트인 객체이다. 그리고 백엔드에도 주소가 있다.
+                // 백엔드 주소
+                method: 'post',
+                body: JSON.stringify({
+                    email: data.email,
+                    password: data.password,
+                }),
+            }) //.then((res) => res.json());
+            const response_data = await response.json();
+            if (response_data.status === 200) {
+                navigate("/todo/3");
+            }
+            //fetch 는 데이터가 오면 json형태로 바꿔줘야한다.
+        } catch (err) {
+            console.log(err);
+            alert("아디이와 비밀번호를 확인해주세요");
         }
-        alert("아디이와 비밀번호를 확인해주세요")
-    }
-
+    };
 
     return <S.Form onSubmit={handleSubmit(handlePressSignIn)}>
         <FormInput label={"이메일"} placeholder={"email"} size={3} name={'email'} register={register}
             error={errors.email?.message}
         />
-
         <FormInput label={"비밀번호"} placeholder={"password"} size={3} name={'password'} register={register}
             error={errors.password?.message}
         />
-
         <TDButton variant={'primary'} size={'full'} shape={'shape'} disabled={!isValid}>
             로그인
         </TDButton>

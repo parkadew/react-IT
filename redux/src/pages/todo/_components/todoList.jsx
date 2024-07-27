@@ -1,10 +1,24 @@
 import styled from "styled-components"
 import OneTodo from "./oneTodo"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from "react";
+import { getTodos } from "../../../store/todo.slice";
 
 const TodoList = () => {
     const todos = useSelector((store) => store.todo.todo);
+    const dispatch = useDispatch();
+    // todo -> rootReducer key
+    // todo -> initialState => {todo:[]} key
 
+    useEffect(() => {
+        async function fetchTodos() {
+            const result = await fetch('/api/todo');
+            // "/api/todo"라고하는
+            const data = await result.json();
+            dispatch(getTodos(data.body));
+        }
+        fetchTodos();
+    }, [dispatch]);
 
     return (
         <S.Wrapper>
