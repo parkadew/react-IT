@@ -10,11 +10,66 @@
 
 ------
 
+프론트엔드 개발자가 가장 많이 만나는 비동기해야하는 상황?
+=> 백엔드에서 데이터를 받아올 때
+=> 특정 시간 이후에 실행해야할 때
+=> 동기적인 코드가 모두 실행되고 나서 실행해야할떄
+
+------
+
 fetch, axios가 대표적으로 백엔드와 데이터 통신을 할떄 가장 많이 사용하는 도구
 (비동기 처리가 된다)
 
 -----
 
+비동기 코드는 동기적인 코드가 실행할떄, 같이 실행(pending)
+동기적인 코드가 모두 실행되고 나서(reject, fulfiled) 결과를 반환
+
+=> "같이 실행되는데 동기 끝나고 결과 반환"
+----
+비동기 처리
+
+A(1초) -> B(1초) -> c(3초 --비동기) -> D(1초) - E(1초 -- C가 필요해)
+
+c(3초) -------- //
 
 
-eqwe
+-----
+promise,async/awzit
+
+new Promise((reject , resolve) => {
+   resolve(C의 반환값) --> then (이행)
+   reject() --> catch(실패)
+}).then((C의 반환값 ) => F(C의 반환값)).then().then()
+
+------
+
+async / await -> 하나의 함수를 비동기로 만들어버린다.
+
+A -> B -> C(비동기) -> D -> E -> F(비동기의 결과값이 필요한)
+
+--> Promise(c).then(F)
+--> async function() {
+      const result = await C비동기
+}
+
+---
+
+fetch --> 반환값이 Response --> 타입(비동기)
+
+const result = await fetch
+const result = fetch.then()
+
+Response.json()
+   ---비동기
+
+const result -= await fetch
+cosnt data = await result.json() ---- c 
+const.log(data)---f
+
+fetch.then(result)
+
+reactHookForm
+redux
+redux-tool-kit
+
