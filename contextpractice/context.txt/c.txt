@@ -1,0 +1,11 @@
+
+constext객체 생성
+프롭스드릴링 -> 불효를 막기 위해 전역변수로 활용하여 ㅅ활용한다
+
+
+1. context 생성 
+ - const Mycontext = React.createContext(기본값);
+ - 위의 기본값에는 어떤것들이 들어갈까 -> 상위 레벨에 매칭되는 Provider가 없다면 기본값이 사용된다 다른말로하면 Provider를 통해 값을 전달하기 떄문에 기본값은 거의 필요로 하지 않을것같다는생각이닫
+
+ Provider를 활용하여 context 데이터를 보내준다
+

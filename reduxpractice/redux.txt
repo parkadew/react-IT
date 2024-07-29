@@ -1,0 +1,37 @@
+
+redux-devtools
+상태 변화 볼수있음
+
+redux란 무엇인가
+왜 태어났냐아 - 리액트는 SPA이다 관리해야할 상태들이 매우 많아진다
+상태관리의 복잡도를 없애기 위해 사용해준다
+props 드릴링 해결 
+
+플럭스 아키텍쳐??
+단방향 데이터 흐름을 활용한 리액트용 애플리케이션 아키텍처
+데이터의 흐름을 정의한 하나의 방향
+
+action -> dispatcher -> sotre -> view
+리덕스가 flux를 구현했다
+
+리덕스의 3가지 원칙
+단 하나의 진실의 원천 - single source of truth
+- store 
+상태값은 일기 전용 - 사전에 정해진 대로만 상태를 변경할수있다
+store에서 정해진 것으로만 바뀔수있다
+
+변화는 순수함수들을 통해서만 변한다
+상태변화를 일으키는 함수가 reducer이다
+
+reduxdataflow
+
+-----------
+
+reudux시작하기
+
+store 
+ReduxStore
+
+
+
+

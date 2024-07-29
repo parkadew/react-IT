@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>redux</title>
+    <script src="http://unpkg.com/redux@latest/dist/redux.min.js"></script>
+</head>
+<body>
+    <p>Counter: <span id ='value'>0</span></p>
+    <div>
+        <button id="in">+</button>
+        <button id="de">_</button>
+    </div>
+
+    <script>
+        const counter = (state,action) =>{
+            if(typeof state == 'undefined'){
+                return 0;
+            }
+                switch(action,type){
+                    case "IN":
+                        return state + 1;
+                    case "DE":
+                        return state -1;
+                    default:
+                        return state;
+                }
+        }
+
+        let store = Redux.createStore(counter);
+        let valueElem = documet.getElemetById('value');
+
+        function render(){
+            valueElem.innerHTML = sore.getState().tostring();
+        }
+
+        render();
+        store.subsribe(render);
+
+        document
+            .getElementById("in")
+            .addEventListener("click",function(){
+                store.dispatch({ type:"IN"})
+            })
+            
+        document
+            .getElementById("de")
+            .addEventListener("click",function(){
+                store.dispatch({ type:"DE"})
+            })
+
+    </script>
+</body>
+</html>
