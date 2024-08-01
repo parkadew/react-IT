@@ -15,6 +15,11 @@ const TodoProvider = ({ children }) => {
             title: "example-2",
             content: "example-2"
         },
+        {
+            id: 3,
+            title: "example-2",
+            content: "example-2"
+        },
     ])
 
     return (
