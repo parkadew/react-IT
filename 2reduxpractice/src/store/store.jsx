@@ -1,7 +1,5 @@
+import { createStore } from "redux";
 
-
-//1.스토어 생성
-const store = createstore(Reducer)
 
 const initialstate = { // 초기 상태 설정
     todos: [
@@ -18,12 +16,35 @@ const initialstate = { // 초기 상태 설정
     ]
 };
 
-const Reducer = (state = initialstate, action){
+const Reducer = (state = initialstate, action) => {
+    switch (action.type) {
 
-    switch (action)
+        case 'ADD_TODO':
+            return {
+                ...state,
+                todos: [...state.todos, action.payload]
+            };
+        case 'UPDATE_TODO':
+            return {
+                ...state,
+                todos: state.todos.map(todo =>
+                    todo.id === action.payload.id ? { ...todo, ...action.payload } : todo
+                )
+            }
+        case 'DELETE_TODO':
+            return {
+                ...state,
+                todos: state.todos.filter(todo => todo.id !== action.payload.id)
+            };
+        default:
+            return state;
+    }
 }
 
-    export default store;
+//1.스토어 생성
+const store = createStore(Reducer)
+
+export default store;
 
 // 리듀서 정의
 

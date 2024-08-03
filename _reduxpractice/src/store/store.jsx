@@ -39,7 +39,7 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 todos: state.todos.map(todo =>
                     todo.id === action.payload.id ? { ...todo, ...action.payload } : todo
-                )
+                ) //새로운 할 일 객체(action.payload)
             };
         case 'DELETE_TODO':
             return {
