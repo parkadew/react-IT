@@ -73,3 +73,70 @@ reactHookForm
 redux
 redux-tool-kit
 
+
+1. 빈저장소생성
+2. 프로바이터 생성
+3. 전역 관리 하고싶은 상태 내려주기
+4. 편리하게 사용가능한 커스텀 훅
+
+
+
+cosntext api
+
+const AuthCOntext = createContext() // 1. 빈 저장소 생성
+
+const AuthProvider = ({children})
+
+값이 날아가잖아 UseEffect를 사용해서 값이 날아가지 않도록 
+재 랜더링
+
+useEffeect(() =>{
+   const userRepository = localStorage.getItem('user')
+   if(userRepository){
+      setUser(userRepository.info)
+   }
+},[])
+
+토큰 보낼때 JSON.stringify({
+   token,
+   info,
+})
+
+전역상태관리 
+const Todocon
+
+const TodoProvider = () => {
+
+}
+
+
+커스텀훅 만들기
+
+const useTodo = () => {
+   const [todos,setTodos] = useconstext(TodoContext);
+
+   const getTodo = async () => {
+      const response = await TodoApi.getTodo()
+      setTodos(response.data)
+   }
+
+   const addTod  = async({title,content}) => {
+      const response = await TodoApi.addTodo({title, content})
+      setTodos([...todos, response.data])
+   }
+
+   const deleteTodo = async({todoId}) => {
+      const response = await TodoApi.deleteTodo(todoid)
+      
+   }
+
+   const updateTodo = async(args) => {
+      await TodoApi.updateTodo(args)
+   }
+
+   return {
+      todos,
+      setTodos,
+   }
+
+}
