@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src"
+  },
+  "include": [
+    "src"
+  ]
+}
+// 1. axiostodo src -> 옮겨오기 
+// 2. axios packagejson의 dependancies -> 붙여넣기 
+// 3. 중복되거나 필요없는 라이브러리 삭제
+//4. vite의 자체 

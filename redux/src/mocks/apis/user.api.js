@@ -2,6 +2,8 @@ import { http, HttpResponse } from "msw";
 
 // backend
 export const login = http.post('/api/user/login', async ({ request }) => {
+    // msw에 http가있다 여기에 post로 데이터를 받아올것이다.
+    // get과 post의 차이는?  get은 바디데이터 전달이 잘 안된다.
     // /todo?todoId=3&userId=2 / /querystring
     // /todo
 
