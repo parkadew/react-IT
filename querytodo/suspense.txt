@@ -1,0 +1,19 @@
+
+Suspense, Errorboundary
+
+* Suspense란, 데이터가 로드 될떄까지 렌더링을 지연한다.
+지연되는 동안 fallback Component를 보여준다.
+
+단순히 데이터를 용청한다고 해서 Suspense가 작동하는게 아니다.
+컴포넌트가 promise를 반환하고 있어야하며 해당 promise의 상태에 따라
+
+컴포넌트를 보여줄지 결정하는 것 React.lazy load
+useSuspenseQuery를 사용하면 데이터가 캐싱될 때까지 해당 컴포넌트를
+
+promise가 반환되게 만들 수 있습니다.
+
+=> 백엔드 요청이 성공할 때 까지(프로미스) 로딩 화면 보여주기
+
+1) Suspense에서 로딩 상태 보여주기
+2) isloading을 사용해서 컴포넌트 내에서 스켈레톤 UI 보여주기
+

@@ -3,7 +3,8 @@ import { flexAlignCenter, flexCenter } from "../../libs/styles/common";
 import TDButton from "../../components/Button";
 import AddTodoModal from "./_components/addTodoModal";
 import TodoList from "./_components/todoList";
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { QueryErrorResetBoundary } from "@tanstack/react-query";
 
 const Todo = () => {
   const [isOpenAddTodoModal, setIsOpenAddTodoModal] = useState(false);
@@ -16,7 +17,9 @@ const Todo = () => {
       <S.Wrapper>
         <S.Container>
           <S.Title>TODOLIST</S.Title>
-          <TodoList />
+          <Suspense fallback={<div>...loading</div>}>
+            <TodoList />
+          </Suspense>
           <TDButton
             size={"full"}
             variant={"primary"}
@@ -24,8 +27,8 @@ const Todo = () => {
           >
             추가
           </TDButton>
-        </S.Container>
-      </S.Wrapper>
+        </S.Container >
+      </S.Wrapper >
     </>
   );
 };
