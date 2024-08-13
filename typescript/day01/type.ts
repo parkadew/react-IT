@@ -69,8 +69,7 @@ const person = {
 /**
  * 
  * @param {title, content}
- * 
- * 
+
  */
 
 function addTodo({ title, content }: { title: string, content: string }) {
