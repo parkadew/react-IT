@@ -39,7 +39,6 @@ interface People {
 interface People {
     name: string
 }
-
 // extands ComponentType<'div>
 // 중복선언 가능 --> 합성
 // 상속이 가능 & 대신에 extands 
