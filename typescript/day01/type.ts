@@ -87,3 +87,4 @@ addTodo({
 // ---- 단점
 
 // 타입을 강제화한다.
+// ektl qhrtmqgkrl
