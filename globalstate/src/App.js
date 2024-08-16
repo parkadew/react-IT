@@ -13,5 +13,4 @@ function App() {
     </TodoProvider>
   );
 }
-
 export default App;

@@ -64,7 +64,6 @@ const person = {
     // ...
     address: "",
 }
-
 /**
  * 
  * @param {title, content}
