@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import TodoProvider from './context/todo.context';
 import AddTodoModal from './components/addTodoModal';
