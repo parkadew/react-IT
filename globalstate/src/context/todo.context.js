@@ -7,13 +7,11 @@ import { createContext, useState } from "react";
 
 // 1. 전역 상태를 저장하고 다룰 수 있는 공간을 생성(createContext)
 // 2. Provider(덮개)를 생성해서 내가 전역 상태로 다루고 싶은 스코프의 최상위에 감싸야한다.
-
 /**
  * <Provider>
  *      <Router></Router>
  * </Provider>
  */
-
 //3. provider에 내가 전달하고 싶은 값을 전달 및 저장 <Provider value={todos}></Provider>
 //4. 컴포넌트에서 가져다가 사용할 떄 useContect()
 
