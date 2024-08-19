@@ -28,7 +28,6 @@ const TodoProvider = ({ children }) => {
             content: "example-content"
         }
     ]);
-
     return <todocontext.Provider value={{ todos, setTodos }}>{children}</todocontext.Provider>
 };
 export default TodoProvider;
