@@ -11,5 +11,3 @@ const router = createBrowserRouter([{
     element: <Todo></Todo>
 },])
 export default router
-
-
