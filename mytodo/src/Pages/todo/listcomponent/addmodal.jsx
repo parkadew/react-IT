@@ -16,7 +16,6 @@ const AddTodoModal = ({ setisOpenAddTodoModal, todos, setTodos }) => {
     setTodos([...todos, newTodo])
     setisOpenAddTodoModal(false);
   }
-
   return (
     <S.Modal>
       <S.Form onSubmit={onPressAddTodo}>
